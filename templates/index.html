@@ -1,432 +1,604 @@
 {% extends "base.html" %}
 {% block content %}
 
-<section class="hero">
-  <div class="hero-orbit hero-orbit-one" aria-hidden="true"></div>
-  <div class="hero-orbit hero-orbit-two" aria-hidden="true"></div>
+<main class="site-main">
+  <section class="hero" aria-labelledby="hero-title">
+    <div class="hero-copy">
+      <p class="eyebrow">Digital systems for business</p>
 
-  <div class="hero-content">
-    <p class="eyebrow">
-      <span class="status-dot" aria-hidden="true"></span>
-      Diseño web · Automatización · Presencia digital
-    </p>
+      <h1 id="hero-title">
+        Tu web no debería<br>
+        simplemente existir.<br>
+        <span>Debería generar negocio.</span>
+      </h1>
 
-    <h1 class="hero-title">
-      Tu negocio merece una
-      <span>presencia digital seria.</span>
-    </h1>
-
-    <p class="hero-subtitle">
-      Landing pages, sitios web y automatizaciones pensadas para presentar tu
-      negocio con claridad, facilitar el contacto y ayudarte a avanzar.
-    </p>
-
-    <div class="hero-actions">
-      <a href="/checkout" class="btn btn-large btn-glow">
-        Solicitar cotización
-        <svg class="btn-arrow" width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
-          <path d="M7.5 15L12.5 10L7.5 5"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"/>
-        </svg>
-      </a>
-
-      <a href="#servicios" class="text-link">
-        Ver servicios
-        <span aria-hidden="true">↓</span>
-      </a>
-    </div>
-
-    <p class="hero-note">
-      Proyectos remotos para Chile y Latinoamérica
-    </p>
-
-    <div class="hero-stats" aria-label="Características del servicio">
-      <div class="stat-item">
-        <strong class="stat-number">48–72 h</strong>
-        <span class="stat-label">Plazo inicial estimado</span>
-      </div>
-
-      <div class="stat-divider" aria-hidden="true"></div>
-
-      <div class="stat-item">
-        <strong class="stat-number">1:1</strong>
-        <span class="stat-label">Comunicación directa</span>
-      </div>
-
-      <div class="stat-divider" aria-hidden="true"></div>
-
-      <div class="stat-item">
-        <strong class="stat-number">Remote</strong>
-        <span class="stat-label">Trabajo sin fronteras</span>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="section services-section reveal" id="servicios">
-  <div class="section-heading-row">
-    <div>
-      <p class="section-kicker">Servicios</p>
-      <h2>Soluciones digitales con un objetivo claro.</h2>
-    </div>
-
-    <p class="section-heading-note">
-      El alcance se adapta a lo que realmente necesitas, sin obligarte a pagar
-      por funciones que no vas a usar.
-    </p>
-  </div>
-
-  <div class="services-grid">
-    <article class="service-card">
-      <div class="service-icon service-icon-blue" aria-hidden="true">
-        <svg width="26" height="26" viewBox="0 0 24 24" fill="none">
-          <path d="M4 5H20V19H4V5Z"
-                stroke="currentColor"
-                stroke-width="1.8"
-                stroke-linejoin="round"/>
-          <path d="M4 9H20"
-                stroke="currentColor"
-                stroke-width="1.8"/>
-          <path d="M8 13H12M8 16H16"
-                stroke="currentColor"
-                stroke-width="1.8"
-                stroke-linecap="round"/>
-        </svg>
-      </div>
-
-      <p class="service-label">Para una oferta concreta</p>
-      <h3>Landing Page</h3>
-
-      <p class="price">
-        Desde $95.000 CLP
-        <span class="price-clp">o $100 USD</span>
+      <p class="hero-description">
+        Sitios web, landing pages y automatizaciones pensadas para que más
+        personas entiendan tu propuesta, confíen en ella y den el siguiente paso.
       </p>
 
-      <ul>
-        <li>Diseño responsive y personalizado</li>
-        <li>Mensaje comercial y CTA definidos</li>
-        <li>Formulario de contacto o WhatsApp</li>
-        <li>Publicación y configuración inicial</li>
-      </ul>
-
-      <a href="/checkout" class="btn">Solicitar landing</a>
-    </article>
-
-    <article class="service-card">
-      <div class="service-icon service-icon-cyan" aria-hidden="true">
-        <svg width="26" height="26" viewBox="0 0 24 24" fill="none">
-          <path d="M20 11.5A8.38 8.38 0 0 1 11.5 20a8.5 8.5 0 1 1 8.5-8.5Z"
-                stroke="currentColor"
-                stroke-width="1.8"
-                stroke-linecap="round"
-                stroke-linejoin="round"/>
-          <path d="M8 10H16M8 14H13"
-                stroke="currentColor"
-                stroke-width="1.8"
-                stroke-linecap="round"/>
-        </svg>
-      </div>
-
-      <p class="service-label">Para ordenar tus consultas</p>
-      <h3>Automatización WhatsApp</h3>
-
-      <p class="price">
-        Desde $47.000 CLP
-        <span class="price-clp">o $50 USD</span>
-      </p>
-
-      <ul>
-        <li>Mensaje inicial y respuestas frecuentes</li>
-        <li>Horarios, ubicación o catálogo básico</li>
-        <li>Flujo de atención inicial ordenado</li>
-        <li>Guía simple de uso y administración</li>
-      </ul>
-
-      <a href="/checkout" class="btn">Solicitar automatización</a>
-    </article>
-
-    <article class="service-card">
-      <div class="service-icon service-icon-violet" aria-hidden="true">
-        <svg width="26" height="26" viewBox="0 0 24 24" fill="none">
-          <path d="M4 4H20V20H4V4Z"
-                stroke="currentColor"
-                stroke-width="1.8"
-                stroke-linejoin="round"/>
-          <path d="M4 8H20M8 4V20"
-                stroke="currentColor"
-                stroke-width="1.8"/>
-          <path d="M12 12H16M12 16H16"
-                stroke="currentColor"
-                stroke-width="1.8"
-                stroke-linecap="round"/>
-        </svg>
-      </div>
-
-      <p class="service-label">Para construir una presencia completa</p>
-      <h3>Sitio Web</h3>
-
-      <p class="price">
-        Desde $190.000 CLP
-        <span class="price-clp">o $200 USD</span>
-      </p>
-
-      <ul>
-        <li>Hasta cinco secciones principales</li>
-        <li>Diseño adaptado a tu marca</li>
-        <li>Servicios, contacto y redes sociales</li>
-        <li>Base ordenada para seguir creciendo</li>
-      </ul>
-
-      <a href="/checkout" class="btn">Solicitar sitio web</a>
-    </article>
-  </div>
-
-  <aside class="bundle-offer">
-    <div class="bundle-copy">
-      <p class="service-label">Solución combinada</p>
-      <h3>Pack Emprendedor</h3>
-      <p>Landing Page + automatización inicial de WhatsApp.</p>
-    </div>
-
-    <div class="bundle-price">
-      <strong>$133.000 CLP</strong>
-      <span>$140 USD · ahorro de $9.000 CLP</span>
-    </div>
-
-    <a href="/checkout" class="btn btn-light">Ver disponibilidad</a>
-  </aside>
-</section>
-
-<section class="section capabilities-section reveal">
-  <div class="section-heading-row">
-    <div>
-      <p class="section-kicker">Base del proyecto</p>
-      <h2>Diseño, estructura y código en la misma dirección.</h2>
-    </div>
-
-    <p class="section-heading-note">
-      Una presencia digital debe verse bien, explicarse fácil y funcionar con
-      consistencia.
-    </p>
-  </div>
-
-  <div class="capabilities-grid">
-    <article class="capability-card">
-      <div class="capability-icon" aria-hidden="true">
-        <svg width="27" height="27" viewBox="0 0 24 24" fill="none">
-          <path d="M4 19L9 14L12 17L20 9"
-                stroke="currentColor"
-                stroke-width="1.8"
-                stroke-linecap="round"
-                stroke-linejoin="round"/>
-          <path d="M15 9H20V14"
-                stroke="currentColor"
-                stroke-width="1.8"
-                stroke-linecap="round"
-                stroke-linejoin="round"/>
-        </svg>
-      </div>
-      <h3>Diseño con intención</h3>
-      <p>Jerarquía visual, composición y llamados a la acción.</p>
-      <span class="capability-link">Claridad visual <span aria-hidden="true">↗</span></span>
-    </article>
-
-    <article class="capability-card">
-      <div class="capability-icon" aria-hidden="true">
-        <svg width="27" height="27" viewBox="0 0 24 24" fill="none">
-          <rect x="7" y="2.5" width="10" height="19" rx="1.8"
-                stroke="currentColor"
-                stroke-width="1.8"/>
-          <path d="M10.5 18.5H13.5"
-                stroke="currentColor"
-                stroke-width="1.8"
-                stroke-linecap="round"/>
-        </svg>
-      </div>
-      <h3>Experiencia responsive</h3>
-      <p>Interfaz cómoda para móvil, tablet y escritorio.</p>
-      <span class="capability-link">Todas las pantallas <span aria-hidden="true">↗</span></span>
-    </article>
-
-    <article class="capability-card">
-      <div class="capability-icon" aria-hidden="true">
-        <svg width="27" height="27" viewBox="0 0 24 24" fill="none">
-          <path d="M20 11.5A8.38 8.38 0 0 1 11.5 20a8.5 8.5 0 1 1 8.5-8.5Z"
-                stroke="currentColor"
-                stroke-width="1.8"
-                stroke-linecap="round"
-                stroke-linejoin="round"/>
-          <path d="M8 10H16M8 14H13"
-                stroke="currentColor"
-                stroke-width="1.8"
-                stroke-linecap="round"/>
-        </svg>
-      </div>
-      <h3>Contacto directo</h3>
-      <p>Formularios y accesos a WhatsApp sin pasos innecesarios.</p>
-      <span class="capability-link">Menos fricción <span aria-hidden="true">↗</span></span>
-    </article>
-
-    <article class="capability-card">
-      <div class="capability-icon" aria-hidden="true">
-        <svg width="27" height="27" viewBox="0 0 24 24" fill="none">
-          <circle cx="11" cy="11" r="6.5"
+      <div class="hero-actions">
+        <a class="button button-primary" href="/checkout">
+          Quiero mejorar mi presencia digital
+          <svg aria-hidden="true" viewBox="0 0 20 20" width="18" height="18">
+            <path d="M4 10H15M11 6L15 10L11 14"
+                  fill="none"
                   stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
                   stroke-width="1.8"/>
-          <path d="M16 16L21 21"
-                stroke="currentColor"
-                stroke-width="1.8"
-                stroke-linecap="round"/>
-          <path d="M8.5 11H13.5M11 8.5V13.5"
-                stroke="currentColor"
-                stroke-width="1.8"
-                stroke-linecap="round"/>
-        </svg>
-      </div>
-      <h3>SEO inicial</h3>
-      <p>Base técnica y semántica pensada para ser encontrada.</p>
-      <span class="capability-link">Preparado para buscar <span aria-hidden="true">↗</span></span>
-    </article>
+          </svg>
+        </a>
 
-    <article class="capability-card">
-      <div class="capability-icon" aria-hidden="true">
-        <svg width="27" height="27" viewBox="0 0 24 24" fill="none">
-          <path d="M12 3L19 6V11C19 15.7 16 19.2 12 21C8 19.2 5 15.7 5 11V6L12 3Z"
-                stroke="currentColor"
-                stroke-width="1.8"
-                stroke-linejoin="round"/>
-          <path d="M9 12L11 14L15 10"
-                stroke="currentColor"
-                stroke-width="1.8"
-                stroke-linecap="round"
-                stroke-linejoin="round"/>
-        </svg>
+        <a class="button-link" href="#soluciones">
+          Ver soluciones
+          <svg aria-hidden="true" viewBox="0 0 20 20" width="17" height="17">
+            <path d="M4 10H15M11 6L15 10L11 14"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="1.8"/>
+          </svg>
+        </a>
       </div>
-      <h3>Publicación cuidada</h3>
-      <p>HTTPS y una configuración inicial ordenada.</p>
-      <span class="capability-link">Lista para publicar <span aria-hidden="true">↗</span></span>
-    </article>
 
-    <article class="capability-card">
-      <div class="capability-icon" aria-hidden="true">
-        <svg width="27" height="27" viewBox="0 0 24 24" fill="none">
-          <path d="M5 19V5M5 19H19"
-                stroke="currentColor"
-                stroke-width="1.8"
-                stroke-linecap="round"/>
-          <path d="M8 15L11 12L13.5 14.5L18 9"
-                stroke="currentColor"
-                stroke-width="1.8"
-                stroke-linecap="round"
-                stroke-linejoin="round"/>
-        </svg>
-      </div>
-      <h3>Estructura mantenible</h3>
-      <p>Una base preparada para añadir contenido o nuevas funciones.</p>
-      <span class="capability-link">Pensada a futuro <span aria-hidden="true">↗</span></span>
-    </article>
-  </div>
-</section>
+      <ul class="hero-points" aria-label="Forma de trabajo">
+        <li>
+          <svg aria-hidden="true" viewBox="0 0 24 24" width="20" height="20">
+            <path d="M4 5H20V16H7L4 19V5Z"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-linejoin="round"
+                  stroke-width="1.7"/>
+            <path d="M8 10H16"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-width="1.7"/>
+          </svg>
+          <span>
+            <strong>Proceso directo</strong>
+            Hablas con quien desarrolla tu proyecto.
+          </span>
+        </li>
 
-<section class="section process-section reveal">
-  <div class="section-heading-row">
-    <div>
-      <p class="section-kicker">Proceso</p>
-      <h2>Un proyecto claro desde el inicio.</h2>
+        <li>
+          <svg aria-hidden="true" viewBox="0 0 24 24" width="20" height="20">
+            <path d="M4 20L9 18L19 8L16 5L6 15L4 20Z"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-linejoin="round"
+                  stroke-width="1.7"/>
+            <path d="M14.5 6.5L17.5 9.5"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-width="1.7"/>
+          </svg>
+          <span>
+            <strong>Diseño a medida</strong>
+            Sin plantillas genéricas ni páginas recicladas.
+          </span>
+        </li>
+
+        <li>
+          <svg aria-hidden="true" viewBox="0 0 24 24" width="20" height="20">
+            <path d="M5 19V5M5 19H19"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-width="1.7"/>
+            <path d="M8 15L11 12L14 14L19 8"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="1.7"/>
+          </svg>
+          <span>
+            <strong>Enfoque comercial</strong>
+            Tu web se construye alrededor de un objetivo.
+          </span>
+        </li>
+      </ul>
     </div>
 
-    <p class="section-heading-note">
-      Antes de construir, definimos el problema, alcance, plazo y siguiente paso.
-    </p>
-  </div>
+    <div class="hero-visual" aria-hidden="true">
+      <div class="hero-light"></div>
 
-  <div class="process-grid">
-    <article class="process-card">
-      <span class="process-number">01</span>
-      <h3>Contexto</h3>
-      <p>Conversamos sobre tu negocio, clientes, referencias y objetivo principal.</p>
-    </article>
+      <div class="browser-mockup">
+        <div class="browser-bar">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
 
-    <article class="process-card">
-      <span class="process-number">02</span>
-      <h3>Alcance</h3>
-      <p>Definimos qué se construirá, qué necesitas entregar y cuánto tomará.</p>
-    </article>
+        <div class="browser-content">
+          <div class="browser-nav">
+            <i></i>
+            <b></b>
+            <b></b>
+            <b></b>
+          </div>
 
-    <article class="process-card">
-      <span class="process-number">03</span>
-      <h3>Desarrollo</h3>
-      <p>Trabajo una primera versión para revisión y ajustes acordados.</p>
-    </article>
+          <div class="browser-hero">
+            <p>Tu negocio, bien presentado.</p>
+            <strong>Una presencia que invita a avanzar.</strong>
+            <em></em>
+          </div>
 
-    <article class="process-card">
-      <span class="process-number">04</span>
-      <h3>Publicación</h3>
-      <p>Dejamos la entrega lista para compartir, medir y seguir mejorando.</p>
-    </article>
-  </div>
-</section>
+          <div class="browser-cards">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+        </div>
+      </div>
 
-<section class="section portfolio-preview reveal">
-  <div class="section-heading-row">
-    <div>
-      <p class="section-kicker">Portafolio</p>
-      <h2>El trabajo tiene que hablar por sí mismo.</h2>
+      <div class="visual-caption">
+        <span class="caption-dot"></span>
+        Presencia digital diseñada con intención
+      </div>
     </div>
+  </section>
 
-    <p class="section-heading-note">
-      Próximamente encontrarás casos, demostraciones y proyectos publicados.
-    </p>
-  </div>
+  <section class="intro-section" aria-labelledby="criterio-title">
+    <div class="section-label">Criterio antes de diseño</div>
 
-  <div class="portfolio-placeholder">
-    <div class="portfolio-placeholder-grid" aria-hidden="true">
-      <span></span>
-      <span></span>
-      <span></span>
-      <span></span>
-      <span></span>
-      <span></span>
+    <div class="intro-layout">
+      <h2 id="criterio-title">
+        Una buena web no empieza<br>
+        con una paleta de colores.
+      </h2>
+
+      <div class="intro-text">
+        <p>
+          Empieza entendiendo qué vendes, a quién quieres llegar, por qué alguien
+          debería elegirte y cuál es el siguiente paso que quieres que tome.
+        </p>
+
+        <p>
+          El diseño aparece después: para ordenar ese mensaje, generar confianza
+          y hacer que la interacción sea simple.
+        </p>
+      </div>
     </div>
+  </section>
 
-    <div class="portfolio-placeholder-content">
-      <p class="portfolio-placeholder-label">En construcción</p>
-      <h3>Portafolio de proyectos</h3>
-      <p>
-        Esta sección se llenará con trabajos reales y demostraciones que puedan
-        evaluarse con contexto.
+  <section class="solutions-section" id="soluciones" aria-labelledby="solutions-title">
+    <div class="section-heading">
+      <div>
+        <p class="eyebrow">Nuestros servicios</p>
+        <h2 id="solutions-title">¿Qué necesita realmente tu negocio?</h2>
+      </div>
+
+      <p class="section-side-text">
+        Elegimos una solución según el problema que necesitas resolver,
+        no según una lista de funciones innecesarias.
       </p>
     </div>
-  </div>
-</section>
 
-<section class="section pricing cta-final reveal">
-  <p class="section-kicker">Siguiente paso</p>
+    <div class="solution-grid">
+      <article class="solution-card">
+        <div class="solution-media solution-media-landing" aria-hidden="true">
+          <div class="mini-window">
+            <div class="mini-window-top"></div>
+            <div class="mini-window-body">
+              <span></span>
+              <strong></strong>
+              <i></i>
+              <b></b>
+            </div>
+          </div>
+        </div>
 
-  <h2>Hablemos de tu proyecto.</h2>
+        <div class="solution-content">
+          <p class="solution-type">Landing page</p>
+          <h3>Necesito conseguir clientes.</h3>
+          <p>
+            Una página enfocada en una oferta, servicio o campaña específica.
+          </p>
 
-  <p class="price-desc">
-    Cuéntame qué necesitas y te responderé con una propuesta clara de alcance,
-    plazo y presupuesto antes de comenzar.
-  </p>
+          <div class="solution-footer">
+            <strong>Desde $95.000 CLP</strong>
+            <a href="/checkout" aria-label="Solicitar una landing page">
+              <svg aria-hidden="true" viewBox="0 0 20 20" width="18" height="18">
+                <path d="M4 10H15M11 6L15 10L11 14"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="1.8"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </article>
 
-  <a href="/checkout" class="btn btn-large btn-glow">
-    Solicitar cotización
-    <svg class="btn-arrow" width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
-      <path d="M7.5 15L12.5 10L7.5 5"
-            stroke="currentColor"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"/>
-    </svg>
-  </a>
+      <article class="solution-card">
+        <div class="solution-media solution-media-whatsapp" aria-hidden="true">
+          <div class="chat-layout">
+            <div class="chat-bubble chat-bubble-one"></div>
+            <div class="chat-bubble chat-bubble-two"></div>
+            <div class="chat-bubble chat-bubble-three"></div>
+            <div class="chat-symbol">⌁</div>
+          </div>
+        </div>
 
-  <p class="guarantee">
-    Sin pago automático · Primero definimos el proyecto.
-  </p>
-</section>
+        <div class="solution-content">
+          <p class="solution-type">Automatización WhatsApp</p>
+          <h3>Necesito ordenar mis consultas.</h3>
+          <p>
+            Respuestas y flujos iniciales para reducir conversaciones repetitivas.
+          </p>
+
+          <div class="solution-footer">
+            <strong>Desde $47.000 CLP</strong>
+            <a href="/checkout" aria-label="Solicitar automatización de WhatsApp">
+              <svg aria-hidden="true" viewBox="0 0 20 20" width="18" height="18">
+                <path d="M4 10H15M11 6L15 10L11 14"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="1.8"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </article>
+
+      <article class="solution-card">
+        <div class="solution-media solution-media-web" aria-hidden="true">
+          <div class="desktop-window">
+            <div class="desktop-window-top"></div>
+            <div class="desktop-window-body">
+              <span></span>
+              <strong></strong>
+              <i></i>
+              <i></i>
+            </div>
+          </div>
+        </div>
+
+        <div class="solution-content">
+          <p class="solution-type">Sitio web</p>
+          <h3>Necesito una presencia completa.</h3>
+          <p>
+            Una base digital para presentar tu negocio y recibir contactos.
+          </p>
+
+          <div class="solution-footer">
+            <strong>Desde $190.000 CLP</strong>
+            <a href="/checkout" aria-label="Solicitar un sitio web">
+              <svg aria-hidden="true" viewBox="0 0 20 20" width="18" height="18">
+                <path d="M4 10H15M11 6L15 10L11 14"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="1.8"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="package-section" aria-labelledby="package-title">
+    <div class="package-copy">
+      <p class="eyebrow">Paquete destacado</p>
+      <h2 id="package-title">Pack Emprendedor</h2>
+      <p class="package-description">
+        Una base concreta para empezar a presentar tu negocio y ordenar
+        las primeras conversaciones de venta.
+      </p>
+
+      <ul class="package-list">
+        <li>
+          <svg aria-hidden="true" viewBox="0 0 20 20" width="18" height="18">
+            <path d="M4 10L8 14L16 6"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="1.8"/>
+          </svg>
+          Landing Page
+        </li>
+        <li>
+          <svg aria-hidden="true" viewBox="0 0 20 20" width="18" height="18">
+            <path d="M4 10L8 14L16 6"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="1.8"/>
+          </svg>
+          Automatización inicial de WhatsApp
+        </li>
+        <li>
+          <svg aria-hidden="true" viewBox="0 0 20 20" width="18" height="18">
+            <path d="M4 10L8 14L16 6"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="1.8"/>
+          </svg>
+          Configuración y puesta en marcha
+        </li>
+      </ul>
+    </div>
+
+    <div class="package-offer">
+      <div class="package-price">
+        <strong>$133.000 CLP</strong>
+        <span>$142.000 CLP</span>
+      </div>
+
+      <p class="package-saving">Ahorras $9.000 CLP</p>
+
+      <a class="button button-primary" href="/checkout">
+        Quiero este pack
+        <svg aria-hidden="true" viewBox="0 0 20 20" width="18" height="18">
+          <path d="M4 10H15M11 6L15 10L11 14"
+                fill="none"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="1.8"/>
+        </svg>
+      </a>
+
+      <p class="package-note">
+        Ideal para independientes, pequeños negocios y nuevos emprendimientos.
+      </p>
+    </div>
+
+    <div class="package-visual" aria-hidden="true">
+      <div class="phone-mockup">
+        <div class="phone-screen">
+          <span></span>
+          <strong>Tu negocio<br>en línea.</strong>
+          <i></i>
+          <b></b>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="principles-section" aria-labelledby="principles-title">
+    <div class="principles-heading">
+      <p class="eyebrow">Forma de trabajar</p>
+      <h2 id="principles-title">Menos decoración.<br>Más intención.</h2>
+    </div>
+
+    <div class="principles-list">
+      <article>
+        <span>01</span>
+        <div>
+          <h3>Pensamos antes de diseñar.</h3>
+          <p>La interfaz responde a un objetivo, no a una tendencia.</p>
+        </div>
+      </article>
+
+      <article>
+        <span>02</span>
+        <div>
+          <h3>Primero móvil.</h3>
+          <p>La experiencia debe funcionar donde llegan tus clientes.</p>
+        </div>
+      </article>
+
+      <article>
+        <span>03</span>
+        <div>
+          <h3>Menos fricción.</h3>
+          <p>Menos pasos entre la visita, la consulta y la acción.</p>
+        </div>
+      </article>
+
+      <article>
+        <span>04</span>
+        <div>
+          <h3>Base preparada para crecer.</h3>
+          <p>Una estructura ordenada para evolucionar con tu negocio.</p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="process-section" id="proceso" aria-labelledby="process-title">
+    <div class="section-heading">
+      <div>
+        <p class="eyebrow">Nuestro proceso</p>
+        <h2 id="process-title">Así hacemos que pase.</h2>
+      </div>
+
+      <p class="section-side-text">
+        Un proyecto avanza mejor cuando las decisiones se entienden desde el inicio.
+      </p>
+    </div>
+
+    <ol class="process-line">
+      <li>
+        <span>01</span>
+        <h3>Entender</h3>
+        <p>Tu negocio y objetivo.</p>
+      </li>
+
+      <li>
+        <span>02</span>
+        <h3>Definir</h3>
+        <p>La estrategia y alcance.</p>
+      </li>
+
+      <li>
+        <span>03</span>
+        <h3>Diseñar</h3>
+        <p>La experiencia.</p>
+      </li>
+
+      <li>
+        <span>04</span>
+        <h3>Construir</h3>
+        <p>El sitio y automatizaciones.</p>
+      </li>
+
+      <li>
+        <span>05</span>
+        <h3>Publicar</h3>
+        <p>Tu proyecto en línea.</p>
+      </li>
+    </ol>
+  </section>
+
+  <section class="projects-section" id="proyectos" aria-labelledby="projects-title">
+    <div class="section-heading">
+      <div>
+        <p class="eyebrow">Proyectos seleccionados</p>
+        <h2 id="projects-title">Trabajo que se puede ver.</h2>
+      </div>
+
+      <a class="button-link" href="#contacto">
+        Consultar por proyectos similares
+        <svg aria-hidden="true" viewBox="0 0 20 20" width="17" height="17">
+          <path d="M4 10H15M11 6L15 10L11 14"
+                fill="none"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="1.8"/>
+        </svg>
+      </a>
+    </div>
+
+    <div class="project-grid">
+      <article class="project-card">
+        <div class="project-preview project-preview-one" aria-hidden="true">
+          <div class="project-preview-screen">
+            <span></span>
+            <strong>Restaurante<br>La Brasa</strong>
+            <i></i>
+            <b></b>
+          </div>
+        </div>
+        <h3>Exploración: gastronomía</h3>
+        <p>Landing Page · Concepto visual</p>
+      </article>
+
+      <article class="project-card">
+        <div class="project-preview project-preview-two" aria-hidden="true">
+          <div class="project-preview-screen">
+            <span></span>
+            <strong>Dr. Andrés<br>Rojas</strong>
+            <i></i>
+            <b></b>
+          </div>
+        </div>
+        <h3>Exploración: servicios profesionales</h3>
+        <p>Sitio web · Concepto visual</p>
+      </article>
+
+      <article class="project-card">
+        <div class="project-preview project-preview-three" aria-hidden="true">
+          <div class="project-preview-screen">
+            <span></span>
+            <strong>Tienda<br>Green</strong>
+            <i></i>
+            <b></b>
+          </div>
+        </div>
+        <h3>Exploración: e-commerce</h3>
+        <p>Tienda online · Concepto visual</p>
+      </article>
+    </div>
+
+    <p class="projects-note">
+      Estas piezas son exploraciones visuales internas; no representan clientes,
+      resultados comerciales ni casos de éxito.
+    </p>
+  </section>
+
+  <section class="faq-section" aria-labelledby="faq-title">
+    <div class="faq-intro">
+      <p class="eyebrow">Preguntas frecuentes</p>
+      <h2 id="faq-title">Lo importante antes de comenzar.</h2>
+      <p>
+        Si tu pregunta no aparece aquí, puedes escribirnos y revisamos tu caso.
+      </p>
+    </div>
+
+    <div class="faq-list">
+      <details>
+        <summary>¿Cuánto tarda un sitio web?</summary>
+        <p>
+          Depende del alcance, el contenido disponible y las revisiones. Una landing
+          suele tomar menos tiempo que un sitio con varias secciones o integraciones.
+        </p>
+      </details>
+
+      <details>
+        <summary>¿Necesito comprar dominio y hosting?</summary>
+        <p>
+          No necesariamente antes de contactar. Revisamos qué necesitas, a quién
+          quedará registrado y qué costos de renovación existirán.
+        </p>
+      </details>
+
+      <details>
+        <summary>¿Qué necesitan para comenzar?</summary>
+        <p>
+          Una explicación de tu negocio, tus servicios, medios de contacto,
+          referencias visuales y cualquier material que quieras publicar.
+        </p>
+      </details>
+
+      <details>
+        <summary>¿La web funcionará en celulares?</summary>
+        <p>
+          Sí. La experiencia se revisa para móvil, tablet y escritorio antes de
+          publicar el proyecto.
+        </p>
+      </details>
+
+      <details>
+        <summary>¿Puedo partir solamente con una landing page?</summary>
+        <p>
+          Sí. Una landing es una buena forma de presentar o validar una oferta antes
+          de ampliar el sitio completo.
+        </p>
+      </details>
+    </div>
+  </section>
+
+  <section class="final-cta" id="contacto" aria-labelledby="cta-title">
+    <div>
+      <p class="eyebrow">El momento es ahora</p>
+      <h2 id="cta-title">Hagamos algo que valga la pena publicar.</h2>
+      <p>
+        Cuéntanos qué necesitas conseguir y te diremos qué solución se adapta mejor
+        a tu negocio.
+      </p>
+
+      <a class="button button-primary" href="/checkout">
+        Iniciar proyecto
+        <svg aria-hidden="true" viewBox="0 0 20 20" width="18" height="18">
+          <path d="M4 10H15M11 6L15 10L11 14"
+                fill="none"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="1.8"/>
+        </svg>
+      </a>
+
+      <small>Sin contratos · Presupuesto personalizado · Atención directa</small>
+    </div>
+  </section>
+</main>
 
 {% endblock %}
