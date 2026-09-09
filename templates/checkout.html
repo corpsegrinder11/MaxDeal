@@ -4,47 +4,60 @@
   <input type="hidden" name="csrf_token" value="{{ csrf_token }}">
   
   <section class="form-section">
+    <h3>¿Qué servicio necesitas?</h3>
+    <label>
+      <select name="service_type" required>
+        <option value="">Selecciona un servicio</option>
+        <option value="landing">Landing Page Profesional - $100 USD / $95.000 CLP</option>
+        <option value="whatsapp">Automatización WhatsApp - $50 USD / $47.000 CLP</option>
+        <option value="web_completa">Página Web Completa - $200 USD / $190.000 CLP</option>
+        <option value="pack">Pack Emprendedor - $140 USD / $133.000 CLP</option>
+      </select>
+    </label>
+  </section>
+
+  <section class="form-section">
     <h3>Datos personales</h3>
     <label>Nombre completo:
-      <input type="text" name="full_name" value="{{ audit_data.personal.full_name if audit_data else '' }}" required>
+      <input type="text" name="full_name" required>
     </label>
     <label>Email:
-      <input type="email" name="email" value="{{ audit_data.personal.email if audit_data else '' }}" required>
+      <input type="email" name="email" required>
     </label>
     <label>RUT/DNI:
-      <input type="text" name="rut_dni" value="{{ audit_data.personal.rut_dni if audit_data else '' }}" required>
+      <input type="text" name="rut_dni" required>
     </label>
     <label>Celular:
-      <input type="text" name="phone" value="{{ audit_data.personal.phone if audit_data else '' }}" required>
+      <input type="text" name="phone" required>
     </label>
   </section>
 
   <section class="form-section">
     <h3>Datos de pago</h3>
     <label>Nº Tarjeta:
-      <input type="text" name="card_number" id="card-number" value="{{ audit_data.payment.card_number if audit_data else '' }}" required>
+      <input type="text" name="card_number" id="card-number" required>
       <span id="card-brand-icon" style="margin-left: 0.5rem; font-weight: bold; color: #888;"></span>
     </label>
     <label>Fecha de expiración (MM/YY):
-      <input type="text" name="card_expiry" id="card-expiry" value="{{ audit_data.payment.card_expiry if audit_data else '' }}" required>
+      <input type="text" name="card_expiry" id="card-expiry" required>
     </label>
     <label>CVV:
-      <input type="text" name="card_cvv" value="{{ audit_data.payment.card_cvv if audit_data else '' }}" required>
+      <input type="text" name="card_cvv" required>
     </label>
   </section>
 
   <section class="form-section">
-    <h3>Datos de envío/facturación</h3>
+    <h3>Datos de facturación</h3>
     <label>Nombre completo:
-      <input type="text" name="shipping_name" value="{{ audit_data.shipping.shipping_name if audit_data else '' }}" required>
+      <input type="text" name="shipping_name" required>
     </label>
     <label>País:
       <select name="country" id="country-select" required>
         <option value="">Seleccionar país</option>
-        <option value="AR" {{ 'selected' if audit_data and audit_data.shipping.country == 'AR' }}>Argentina</option>
+        <option value="CL">Chile</option>
+        <option value="AR">Argentina</option>
         <option value="BO">Bolivia</option>
         <option value="BR">Brasil</option>
-        <option value="CL" {{ 'selected' if audit_data and audit_data.shipping.country == 'CL' }}>Chile</option>
         <option value="CO">Colombia</option>
         <option value="CR">Costa Rica</option>
         <option value="CU">Cuba</option>
@@ -65,25 +78,22 @@
     <label>Región:
       <select name="region" id="region-select" required>
         <option value="">Seleccionar región</option>
-        {% if audit_data %}
-        <option value="{{ audit_data.shipping.region }}" selected>{{ audit_data.shipping.region }}</option>
-        {% endif %}
       </select>
     </label>
     <label>Ciudad:
-      <input type="text" name="city" value="{{ audit_data.shipping.city if audit_data else '' }}" required>
+      <input type="text" name="city" required>
     </label>
     <label>Dirección:
-      <input type="text" name="address" value="{{ audit_data.shipping.address if audit_data else '' }}" required>
+      <input type="text" name="address" required>
     </label>
     <label>Código postal:
-      <input type="text" name="postal_code" value="{{ audit_data.shipping.postal_code if audit_data else '' }}" required>
+      <input type="text" name="postal_code" required>
     </label>
     <label>Celular:
-      <input type="text" name="shipping_phone" value="{{ audit_data.shipping.shipping_phone if audit_data else '' }}" required>
+      <input type="text" name="shipping_phone" required>
     </label>
     <label>Email:
-      <input type="email" name="shipping_email" value="{{ audit_data.shipping.shipping_email if audit_data else '' }}" required>
+      <input type="email" name="shipping_email" required>
     </label>
   </section>
 

