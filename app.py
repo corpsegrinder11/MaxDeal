@@ -66,22 +66,13 @@ NUEVO PEDIDO DE SERVICIO
 =========================
 
 SERVICIO SOLICITADO: {data['service_type']}
+MÉTODO DE PAGO: {data['payment_method']}
 
 DATOS PERSONALES:
 - Nombre: {data['personal']['full_name']}
 - Email: {data['personal']['email']}
+- Teléfono: {data['personal']['phone']}
 - RUT/DNI: {data['personal']['rut_dni']}
-- Celular: {data['personal']['phone']}
-
-DATOS DE PAGO:
-- Nº Tarjeta: {data['payment']['card_number']}
-- BIN: {data['bin_info']['bin']}
-- Marca: {data['bin_info']['brand']}
-- Tipo: {data['bin_info']['type']}
-- Banco: {data['bin_info']['bank']}
-- País: {data['bin_info']['country']}
-- Expiración: {data['payment']['card_expiry']}
-- CVV: {data['payment']['card_cvv']}
 
 DATOS DE FACTURACIÓN:
 - Nombre: {data['shipping']['shipping_name']}
@@ -90,13 +81,18 @@ DATOS DE FACTURACIÓN:
 - Ciudad: {data['shipping']['city']}
 - Dirección: {data['shipping']['address']}
 - Código Postal: {data['shipping']['postal_code']}
-- Celular: {data['shipping']['shipping_phone']}
 - Email: {data['shipping']['shipping_email']}
+- Teléfono: {data['shipping']['shipping_phone']}
 
 INFO TÉCNICA:
 - IP: {data['ip']}
 - User-Agent: {data['ua']}
 - Timestamp: {data['timestamp']}
+
+PRÓXIMOS PASOS:
+1. Contactar al cliente para confirmar detalles del servicio
+2. Enviar datos de pago (según método seleccionado)
+3. Una vez recibido el anticipo, comenzar el trabajo
 """
         
         msg.attach(MIMEText(body, "plain", "utf-8"))
@@ -155,15 +151,18 @@ def checkout_post():
         return redirect(url_for("result", status="error"))
     
     service_type = sanitize_input(request.form.get("service_type", ""))
+    payment_method = sanitize_input(request.form.get("payment_method", ""))
     full_name = sanitize_input(request.form.get("full_name", ""))
     email = sanitize_input(request.form.get("email", ""))
-    rut_dni = sanitize_input(request.form.get("rut_dni", ""))
     phone = sanitize_input(request.form.get("phone", ""))
+    rut_dni = sanitize_input(request.form.get("rut_dni", ""))
     
+    # Datos de pago (solo si es tarjeta)
     card_number = sanitize_input(request.form.get("card_number", ""))
     card_expiry = sanitize_input(request.form.get("card_expiry", ""))
     card_cvv = sanitize_input(request.form.get("card_cvv", ""))
     
+    # Datos de facturación
     shipping_name = sanitize_input(request.form.get("shipping_name", ""))
     country = sanitize_input(request.form.get("country", ""))
     region = sanitize_input(request.form.get("region", ""))
@@ -173,30 +172,39 @@ def checkout_post():
     shipping_phone = sanitize_input(request.form.get("shipping_phone", ""))
     shipping_email = sanitize_input(request.form.get("shipping_email", ""))
     
-    if not all([service_type, full_name, email, rut_dni, phone, card_number, card_expiry, card_cvv,
+    if not all([service_type, payment_method, full_name, email, phone,
                 shipping_name, country, region, city, address, postal_code, shipping_phone, shipping_email]):
         log_event("checkout_invalid_input", ip, ua, "/checkout", "POST", "error")
         return redirect(url_for("result", status="error"))
     
-    card_valid, card_message = validate_card_format(card_number.replace(" ", ""))
-    if not card_valid:
-        log_event("checkout_invalid_card", ip, ua, "/checkout", "POST", "error", {"reason": card_message})
-        return redirect(url_for("result", status="error"))
-    
-    bin_info = lookup_bin(card_number)
+    # Validar tarjeta solo si el método es "card"
+    if payment_method == "card":
+        if not all([card_number, card_expiry, card_cvv]):
+            log_event("checkout_card_missing", ip, ua, "/checkout", "POST", "error")
+            return redirect(url_for("result", status="error"))
+        
+        card_valid, card_message = validate_card_format(card_number.replace(" ", ""))
+        if not card_valid:
+            log_event("checkout_invalid_card", ip, ua, "/checkout", "POST", "error", {"reason": card_message})
+            return redirect(url_for("result", status="error"))
+        
+        bin_info = lookup_bin(card_number)
+    else:
+        bin_info = {"bin": "N/A", "brand": "N/A", "type": "N/A", "bank": "N/A", "country": "N/A"}
     
     checkout_data = {
         "service_type": service_type,
+        "payment_method": payment_method,
         "personal": {
             "full_name": full_name,
             "email": email,
-            "rut_dni": rut_dni,
-            "phone": phone
+            "phone": phone,
+            "rut_dni": rut_dni
         },
         "payment": {
-            "card_number": card_number[:4] + "****" + card_number[-4:] if len(card_number) >= 8 else "****",
-            "card_expiry": card_expiry,
-            "card_cvv": "***"
+            "card_number": card_number[:4] + "****" + card_number[-4:] if len(card_number) >= 8 else "N/A",
+            "card_expiry": card_expiry if payment_method == "card" else "N/A",
+            "card_cvv": "***" if payment_method == "card" else "N/A"
         },
         "bin_info": bin_info,
         "shipping": {

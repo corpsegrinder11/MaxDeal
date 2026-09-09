@@ -15,7 +15,7 @@
   <div class="progress-line"></div>
   <div class="progress-step">
     <span class="step-number">3</span>
-    <span class="step-label">Pago</span>
+    <span class="step-label">Confirmación</span>
   </div>
 </div>
 
@@ -24,7 +24,7 @@
   
   <!-- Sección 1: Servicio -->
   <section class="form-section">
-    <h3>1. ¿Qué servicio necesitas?</h3>
+    <h3>1. Selecciona tu servicio</h3>
     <label>
       <select name="service_type" id="service_type" required>
         <option value="">Selecciona un servicio</option>
@@ -34,7 +34,12 @@
         <option value="pack">Pack Emprendedor - $140 USD / $133.000 CLP</option>
       </select>
     </label>
-    <p class="field-note">💳 Pago 50% al iniciar, 50% al entregar</p>
+    <div class="service-summary" id="service_summary" style="display: none;">
+      <p><strong>Servicio:</strong> <span id="service_name"></span></p>
+      <p><strong>Total:</strong> <span id="service_total"></span></p>
+      <p><strong>Anticipo (50%):</strong> <span id="service_deposit" style="color: #00aa00; font-weight: bold;"></span></p>
+    </div>
+    <p class="field-note">💳 Pago 50% de anticipo para comenzar, 50% al entregar</p>
   </section>
 
   <!-- Sección 2: Datos Personales -->
@@ -49,15 +54,15 @@
     <label>Teléfono / WhatsApp:
       <input type="text" name="phone" placeholder="+56 9 1234 5678" required>
     </label>
-    <label>RUT/DNI (opcional):
-      <input type="text" name="rut_dni" placeholder="Para facturación">
+    <label>RUT/DNI (opcional para facturación):
+      <input type="text" name="rut_dni" placeholder="Ej: 12.345.678-9">
     </label>
   </section>
 
   <!-- Sección 3: Datos de Facturación -->
   <section class="form-section">
     <h3>3. Datos de facturación</h3>
-    <label>Nombre completo:
+    <label>Nombre o empresa:
       <input type="text" name="shipping_name" placeholder="Puede ser el mismo que arriba" required>
     </label>
     <label>País:
@@ -106,32 +111,87 @@
     </label>
   </section>
 
-  <!-- Sección 4: Pago -->
+  <!-- Sección 4: Método de Pago (PREPARADO PARA INTEGRACIÓN) -->
   <section class="form-section">
-    <h3>4. Datos de pago (50% anticipo)</h3>
+    <h3>4. Método de pago</h3>
     
-    <div class="payment-info">
-      <p>🔒 Pago seguro con tarjeta de crédito/débito</p>
-      <p class="small">El cargo será el 50% del valor del servicio. El restante se paga al entregar.</p>
+    <div class="payment-methods-selector">
+      <label class="payment-method-option">
+        <input type="radio" name="payment_method" value="card" checked>
+        <div class="payment-method-card">
+          <span class="payment-method-icon">💳</span>
+          <div>
+            <strong>Tarjeta de Crédito/Débito</strong>
+            <p class="small">Visa, Mastercard, Amex</p>
+          </div>
+        </div>
+      </label>
+      
+      <label class="payment-method-option">
+        <input type="radio" name="payment_method" value="transfer">
+        <div class="payment-method-card">
+          <span class="payment-method-icon">🏦</span>
+          <div>
+            <strong>Transferencia Bancaria</strong>
+            <p class="small">Pago directo a cuenta</p>
+          </div>
+        </div>
+      </label>
+      
+      <label class="payment-method-option">
+        <input type="radio" name="payment_method" value="paypal">
+        <div class="payment-method-card">
+          <span class="payment-method-icon">💠</span>
+          <div>
+            <strong>PayPal</strong>
+            <p class="small">Pago internacional</p>
+          </div>
+        </div>
+      </label>
     </div>
     
-    <label>Nº de tarjeta:
-      <input type="text" name="card_number" id="card-number" placeholder="1234 5678 9012 3456" required>
-      <span id="card-brand-icon" style="margin-left: 0.5rem; font-weight: bold; color: #888;"></span>
-    </label>
-    <label>Fecha de expiración (MM/YY):
-      <input type="text" name="card_expiry" id="card-expiry" placeholder="MM/YY" required>
-    </label>
-    <label>CVV:
-      <input type="text" name="card_cvv" placeholder="123" required>
-    </label>
+    <!-- Formulario de tarjeta (se muestra si selecciona "card") -->
+    <div id="card-payment-form" class="payment-form">
+      <label>Nº de tarjeta:
+        <input type="text" name="card_number" id="card-number" placeholder="1234 5678 9012 3456">
+        <span id="card-brand-icon" style="margin-left: 0.5rem; font-weight: bold; color: #888;"></span>
+      </label>
+      <label>Fecha de expiración (MM/YY):
+        <input type="text" name="card_expiry" id="card-expiry" placeholder="MM/YY">
+      </label>
+      <label>CVV:
+        <input type="text" name="card_cvv" placeholder="123">
+      </label>
+    </div>
+    
+    <!-- Información de transferencia (se muestra si selecciona "transfer") -->
+    <div id="transfer-payment-form" class="payment-form" style="display: none;">
+      <div class="payment-info">
+        <p><strong>Te enviaremos los datos de transferencia por email después de enviar este formulario.</strong></p>
+        <p class="small">Una vez recibido el anticipo, comenzaremos a trabajar en tu proyecto.</p>
+      </div>
+    </div>
+    
+    <!-- Información de PayPal (se muestra si selecciona "paypal") -->
+    <div id="paypal-payment-form" class="payment-form" style="display: none;">
+      <div class="payment-info">
+        <p><strong>Te redirigiremos a PayPal para completar el pago.</strong></p>
+        <p class="small">Comisión internacional: 5.4% + $0.30 USD</p>
+      </div>
+    </div>
+    
+    <div class="payment-info">
+      <p>🔒 Pago seguro y encriptado</p>
+      <p class="small">El cargo será el 50% del valor total del servicio.</p>
+    </div>
     
     <div class="payment-methods">
-      <p>Aceptamos:</p>
+      <p>Métodos disponibles:</p>
       <div class="cards-icons">
         <span class="card-icon">💳 Visa</span>
         <span class="card-icon">💳 Mastercard</span>
         <span class="card-icon">💳 Amex</span>
+        <span class="card-icon">🏦 Transferencia</span>
       </div>
     </div>
   </section>
@@ -158,8 +218,8 @@
   </div>
   {% endif %}
 
-  <button type="submit" class="btn btn-large btn-full">Pagar 50% de anticipo</button>
+  <button type="submit" class="btn btn-large btn-full" id="submit_button">Continuar al pago</button>
   
-  <p class="checkout-note">Al hacer clic en "Pagar", aceptas nuestros <a href="/terms">Términos y Condiciones</a> y <a href="/privacy">Política de Privacidad</a>.</p>
+  <p class="checkout-note">Al hacer clic en "Continuar", aceptas nuestros <a href="/terms">Términos y Condiciones</a> y <a href="/privacy">Política de Privacidad</a>.</p>
 </form>
 {% endblock %}
