@@ -1,8 +1,83 @@
 {% extends "base.html" %}
 {% block content %}
-<section class="product">
-  <h2>Producto de Prueba</h2>
-  <p>Descripción breve del producto. Solo para fines de testing.</p>
-  <a href="/checkout" class="btn">Comprar ahora</a>
+
+<!-- Hero Section -->
+<section class="hero">
+  <h1>MaxDeal</h1>
+  <p class="subtitle">La herramienta definitiva para encontrar las mejores ofertas en tiempo real</p>
+  <a href="/checkout" class="btn btn-large">Obtener acceso anticipado</a>
+  <p class="hero-note">Oferta limitada • Solo $9.99 USD</p>
 </section>
+
+<!-- Problema -->
+<section class="section">
+  <h2>¿Cansado de buscar ofertas manualmente?</h2>
+  <p>Pierdes horas comparando precios en diferentes tiendas online. Las ofertas se agotan rápido y nunca sabes si realmente estás obteniendo el mejor precio.</p>
+</section>
+
+<!-- Solución -->
+<section class="section">
+  <h2>MaxDeal lo resuelve por ti</h2>
+  <p>Nuestro sistema monitorea automáticamente las principales tiendas de Latinoamérica y te notifica cuando encuentra ofertas reales con descuentos superiores al 30%.</p>
+  
+  <ul class="benefits-list">
+    <li>✓ Monitoreo 24/7 de Falabella, Paris, Coto, Jumbo y más</li>
+    <li>✓ Alertas instantáneas cuando hay ofertas reales</li>
+    <li>✓ Historial de precios para verificar el descuento real</li>
+    <li>✓ Sin publicidad, sin distracciones</li>
+  </ul>
+</section>
+
+<!-- Características -->
+<section class="section">
+  <h2>Cómo funciona</h2>
+  <ol class="steps-list">
+    <li><strong>Te registras</strong> — Creas tu cuenta en menos de 2 minutos</li>
+    <li><strong>Configuras alertas</strong> — Eliges qué productos o categorías te interesan</li>
+    <li><strong>Recibes notificaciones</strong> — Te avisamos cuando hay una oferta real</li>
+    <li><strong>Compras al mejor precio</strong> — Accedes directamente a la oferta antes que se agote</li>
+  </ol>
+</section>
+
+<!-- Precio -->
+<section class="section pricing">
+  <h2>Acceso de por vida</h2>
+  <p class="price">$9.99 <span class="price-note">USD (pago único)</span></p>
+  <p class="price-desc">Sin suscripciones mensuales. Sin costos ocultos.</p>
+  <a href="/checkout" class="btn btn-large">Comprar ahora</a>
+  <p class="guarantee">🔒 Garantía de 7 días — Si no te gusta, te devolvemos tu dinero</p>
+</section>
+
+<!-- FAQ -->
+<section class="section">
+  <h2>Preguntas frecuentes</h2>
+  
+  <div class="faq-item">
+    <strong>¿Qué tiendas monitorea MaxDeal?</strong>
+    <p>Principalmente Falabella, Paris, Coto, Jumbo, Carrefour y Walmart en Chile, Argentina, México, Colombia y Perú.</p>
+  </div>
+  
+  <div class="faq-item">
+    <strong>¿Cómo recibo las alertas?</strong>
+    <p>Puedes elegir entre email, notificaciones push en tu navegador, o ambos. Tú configuras la frecuencia.</p>
+  </div>
+  
+  <div class="faq-item">
+    <strong>¿Es realmente de por vida?</strong>
+    <p>Sí. Pagas una vez y tienes acceso ilimitado a todas las funcionalidades para siempre. Sin renovaciones.</p>
+  </div>
+  
+  <div class="faq-item">
+    <strong>¿Qué pasa si no encuentro ofertas útiles?</strong>
+    <p>Ofrecemos garantía de 7 días. Si en la primera semana no encuentras al menos una oferta que te sirva, te devolvemos el 100% de tu dinero.</p>
+  </div>
+</section>
+
+<!-- CTA Final -->
+<section class="section cta-final">
+  <h2>¿Listo para dejar de perder tiempo buscando ofertas?</h2>
+  <a href="/checkout" class="btn btn-large">Obtener MaxDeal por $9.99 USD</a>
+  <p class="cta-note">Acceso inmediato • Garantía de 7 días</p>
+</section>
+
 {% endblock %}
