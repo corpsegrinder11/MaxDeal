@@ -69,6 +69,46 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
+  // Algoritmo de Luhn para validación de tarjeta
+  function luhnCheck(cardNumber) {
+    const digits = cardNumber.split('').map(Number);
+    let sum = 0;
+    let isEven = false;
+
+    for (let i = digits.length - 1; i >= 0; i--) {
+      let digit = digits[i];
+      if (isEven) {
+        digit *= 2;
+        if (digit > 9) digit -= 9;
+      }
+      sum += digit;
+      isEven = !isEven;
+    }
+
+    return sum % 10 === 0;
+  }
+
+  // Validar tarjeta al salir del input
+  if (cardInput) {
+    cardInput.addEventListener('blur', (e) => {
+      const value = e.target.value.replace(/\D/g, '');
+      if (value.length >= 13) {
+        if (!luhnCheck(value)) {
+          e.target.style.borderColor = "#cc0000";
+          brandIcon.textContent = 'INVÁLIDA';
+          brandIcon.style.color = '#cc0000';
+        } else {
+          e.target.style.borderColor = "#00aa00";
+        }
+      }
+    });
+
+    cardInput.addEventListener('input', (e) => {
+      e.target.style.borderColor = "#444";
+      brandIcon.style.color = "#888";
+    });
+  }
+
   // Regiones por país (Latinoamérica)
   const regionsByCountry = {
     "AR": ["Buenos Aires", "Catamarca", "Chaco", "Chubut", "Córdoba", "Corrientes", "Entre Ríos", "Formosa", "Jujuy", "La Pampa", "La Rioja", "Mendoza", "Misiones", "Neuquén", "Río Negro", "Salta", "San Juan", "San Luis", "Santa Cruz", "Santa Fe", "Santiago del Estero", "Tierra del Fuego", "Tucumán"],

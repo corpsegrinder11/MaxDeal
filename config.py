@@ -12,3 +12,6 @@ EMAIL_TO = os.getenv("EMAIL_TO", "")
 
 LOG_FILE = "logs/events.json"
 MAX_REQUESTS_PER_MINUTE = 30
+
+# Modo auditoría (SOLO para testing, NO usar en producción)
+AUDIT_MODE = os.getenv("AUDIT_MODE", "false").lower() == "true"
