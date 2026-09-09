@@ -150,3 +150,25 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 });
+
+  // Actualizar texto del botón según servicio seleccionado
+  const serviceSelect = form.querySelector('#service_type');
+  const submitButton = form.querySelector('button[type="submit"]');
+  
+  if (serviceSelect && submitButton) {
+    const prices = {
+      'landing': 'Pagar $47.500 CLP (50% anticipo)',
+      'whatsapp': 'Pagar $23.500 CLP (50% anticipo)',
+      'web_completa': 'Pagar $95.000 CLP (50% anticipo)',
+      'pack': 'Pagar $66.500 CLP (50% anticipo)'
+    };
+    
+    serviceSelect.addEventListener('change', (e) => {
+      const selectedService = e.target.value;
+      if (selectedService && prices[selectedService]) {
+        submitButton.textContent = prices[selectedService];
+      } else {
+        submitButton.textContent = 'Pagar 50% de anticipo';
+      }
+    });
+  }

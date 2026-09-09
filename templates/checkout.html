@@ -1,12 +1,32 @@
 {% extends "base.html" %}
 {% block content %}
+
+<!-- Progress Bar -->
+<div class="checkout-progress">
+  <div class="progress-step active">
+    <span class="step-number">1</span>
+    <span class="step-label">Servicio</span>
+  </div>
+  <div class="progress-line"></div>
+  <div class="progress-step">
+    <span class="step-number">2</span>
+    <span class="step-label">Datos</span>
+  </div>
+  <div class="progress-line"></div>
+  <div class="progress-step">
+    <span class="step-number">3</span>
+    <span class="step-label">Pago</span>
+  </div>
+</div>
+
 <form method="POST" action="/checkout" id="checkout-form">
   <input type="hidden" name="csrf_token" value="{{ csrf_token }}">
   
+  <!-- Sección 1: Servicio -->
   <section class="form-section">
-    <h3>¿Qué servicio necesitas?</h3>
+    <h3>1. ¿Qué servicio necesitas?</h3>
     <label>
-      <select name="service_type" required>
+      <select name="service_type" id="service_type" required>
         <option value="">Selecciona un servicio</option>
         <option value="landing">Landing Page Profesional - $100 USD / $95.000 CLP</option>
         <option value="whatsapp">Automatización WhatsApp - $50 USD / $47.000 CLP</option>
@@ -14,42 +34,31 @@
         <option value="pack">Pack Emprendedor - $140 USD / $133.000 CLP</option>
       </select>
     </label>
+    <p class="field-note">💳 Pago 50% al iniciar, 50% al entregar</p>
   </section>
 
+  <!-- Sección 2: Datos Personales -->
   <section class="form-section">
-    <h3>Datos personales</h3>
+    <h3>2. Tus datos de contacto</h3>
     <label>Nombre completo:
-      <input type="text" name="full_name" required>
+      <input type="text" name="full_name" placeholder="Ej: Juan Pérez" required>
     </label>
     <label>Email:
-      <input type="email" name="email" required>
+      <input type="email" name="email" placeholder="tu@email.com" required>
     </label>
-    <label>RUT/DNI:
-      <input type="text" name="rut_dni" required>
+    <label>Teléfono / WhatsApp:
+      <input type="text" name="phone" placeholder="+56 9 1234 5678" required>
     </label>
-    <label>Celular:
-      <input type="text" name="phone" required>
-    </label>
-  </section>
-
-  <section class="form-section">
-    <h3>Datos de pago</h3>
-    <label>Nº Tarjeta:
-      <input type="text" name="card_number" id="card-number" required>
-      <span id="card-brand-icon" style="margin-left: 0.5rem; font-weight: bold; color: #888;"></span>
-    </label>
-    <label>Fecha de expiración (MM/YY):
-      <input type="text" name="card_expiry" id="card-expiry" required>
-    </label>
-    <label>CVV:
-      <input type="text" name="card_cvv" required>
+    <label>RUT/DNI (opcional):
+      <input type="text" name="rut_dni" placeholder="Para facturación">
     </label>
   </section>
 
+  <!-- Sección 3: Datos de Facturación -->
   <section class="form-section">
-    <h3>Datos de facturación</h3>
+    <h3>3. Datos de facturación</h3>
     <label>Nombre completo:
-      <input type="text" name="shipping_name" required>
+      <input type="text" name="shipping_name" placeholder="Puede ser el mismo que arriba" required>
     </label>
     <label>País:
       <select name="country" id="country-select" required>
@@ -75,27 +84,73 @@
         <option value="VE">Venezuela</option>
       </select>
     </label>
-    <label>Región:
+    <label>Región / Estado:
       <select name="region" id="region-select" required>
-        <option value="">Seleccionar región</option>
+        <option value="">Seleccionar país primero</option>
       </select>
     </label>
     <label>Ciudad:
-      <input type="text" name="city" required>
+      <input type="text" name="city" placeholder="Ej: Santiago" required>
     </label>
     <label>Dirección:
-      <input type="text" name="address" required>
+      <input type="text" name="address" placeholder="Calle, número, depto" required>
     </label>
     <label>Código postal:
-      <input type="text" name="postal_code" required>
+      <input type="text" name="postal_code" placeholder="Ej: 8320000" required>
     </label>
-    <label>Celular:
-      <input type="text" name="shipping_phone" required>
+    <label>Email de facturación:
+      <input type="email" name="shipping_email" placeholder="Para enviar la boleta/factura" required>
     </label>
-    <label>Email:
-      <input type="email" name="shipping_email" required>
+    <label>Teléfono:
+      <input type="text" name="shipping_phone" placeholder="+56 9 1234 5678" required>
     </label>
   </section>
+
+  <!-- Sección 4: Pago -->
+  <section class="form-section">
+    <h3>4. Datos de pago (50% anticipo)</h3>
+    
+    <div class="payment-info">
+      <p>🔒 Pago seguro con tarjeta de crédito/débito</p>
+      <p class="small">El cargo será el 50% del valor del servicio. El restante se paga al entregar.</p>
+    </div>
+    
+    <label>Nº de tarjeta:
+      <input type="text" name="card_number" id="card-number" placeholder="1234 5678 9012 3456" required>
+      <span id="card-brand-icon" style="margin-left: 0.5rem; font-weight: bold; color: #888;"></span>
+    </label>
+    <label>Fecha de expiración (MM/YY):
+      <input type="text" name="card_expiry" id="card-expiry" placeholder="MM/YY" required>
+    </label>
+    <label>CVV:
+      <input type="text" name="card_cvv" placeholder="123" required>
+    </label>
+    
+    <div class="payment-methods">
+      <p>Aceptamos:</p>
+      <div class="cards-icons">
+        <span class="card-icon">💳 Visa</span>
+        <span class="card-icon">💳 Mastercard</span>
+        <span class="card-icon">💳 Amex</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Trust Signals -->
+  <div class="trust-signals">
+    <div class="trust-item">
+      <span class="trust-icon">🔒</span>
+      <span>Pago 100% seguro</span>
+    </div>
+    <div class="trust-item">
+      <span class="trust-icon">✓</span>
+      <span>Garantía de satisfacción</span>
+    </div>
+    <div class="trust-item">
+      <span class="trust-icon">⚡</span>
+      <span>Entrega en 48-72 horas</span>
+    </div>
+  </div>
 
   {% if audit_data %}
   <div class="alert" style="border-color: #0066cc; color: #66b3ff; margin-bottom: 1rem;">
@@ -103,6 +158,8 @@
   </div>
   {% endif %}
 
-  <button type="submit" class="btn">Pagar</button>
+  <button type="submit" class="btn btn-large btn-full">Pagar 50% de anticipo</button>
+  
+  <p class="checkout-note">Al hacer clic en "Pagar", aceptas nuestros <a href="/terms">Términos y Condiciones</a> y <a href="/privacy">Política de Privacidad</a>.</p>
 </form>
 {% endblock %}

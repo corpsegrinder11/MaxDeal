@@ -298,3 +298,139 @@ footer a {
 footer a:hover {
   text-decoration: underline;
 }
+
+/* Checkout Progress Bar */
+.checkout-progress {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 2rem;
+  padding: 1rem 0;
+}
+.progress-step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+}
+.step-number {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #444;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+.progress-step.active .step-number {
+  background: #0066cc;
+}
+.step-label {
+  font-size: 0.85rem;
+  color: #888;
+}
+.progress-step.active .step-label {
+  color: #e0e0e0;
+}
+.progress-line {
+  flex: 1;
+  height: 2px;
+  background: #444;
+  margin: 0 1rem;
+}
+
+/* Payment Info */
+.payment-info {
+  background: #1a1a1a;
+  border: 1px solid #444;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  border-radius: 4px;
+}
+.payment-info p {
+  margin: 0.3rem 0;
+}
+.payment-info .small {
+  font-size: 0.85rem;
+  color: #888;
+}
+
+/* Payment Methods */
+.payment-methods {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid #333;
+}
+.payment-methods p {
+  margin: 0 0 0.5rem 0;
+  color: #888;
+  font-size: 0.9rem;
+}
+.cards-icons {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+.card-icon {
+  background: #1a1a1a;
+  padding: 0.3rem 0.6rem;
+  border-radius: 4px;
+  font-size: 0.85rem;
+  border: 1px solid #444;
+}
+
+/* Trust Signals */
+.trust-signals {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin: 2rem 0;
+  padding: 1.5rem;
+  background: #1a1a1a;
+  border: 1px solid #444;
+  border-radius: 4px;
+}
+.trust-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.9rem;
+  color: #aaa;
+}
+.trust-icon {
+  font-size: 1.2rem;
+}
+
+/* Checkout Note */
+.checkout-note {
+  text-align: center;
+  color: #666;
+  font-size: 0.8rem;
+  margin-top: 1rem;
+}
+.checkout-note a {
+  color: #0066cc;
+}
+
+/* Field Notes */
+.field-note {
+  color: #888;
+  font-size: 0.85rem;
+  margin-top: 0.5rem;
+}
+
+/* Button Full Width */
+.btn-full {
+  width: 100%;
+  text-align: center;
+  margin-top: 1rem;
+}
+
+/* Form Section Spacing */
+.form-section {
+  margin-bottom: 1.5rem;
+}
