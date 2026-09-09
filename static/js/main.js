@@ -213,3 +213,22 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 });
+
+  // Scroll Reveal Animation
+  function revealOnScroll() {
+    const reveals = document.querySelectorAll('.section, .hero, .trust-signals');
+    
+    reveals.forEach(element => {
+      const windowHeight = window.innerHeight;
+      const elementTop = element.getBoundingClientRect().top;
+      const elementVisible = 150;
+      
+      if (elementTop < windowHeight - elementVisible) {
+        element.classList.add('active');
+      }
+    });
+  }
+
+  // Activar al cargar y al hacer scroll
+  window.addEventListener('scroll', revealOnScroll);
+  revealOnScroll(); // Check on load
