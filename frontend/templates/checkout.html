@@ -1,0 +1,88 @@
+{% extends "base.html" %}
+{% block content %}
+<form method="POST" action="/checkout" id="checkout-form">
+  <input type="hidden" name="csrf_token" value="{{ csrf_token }}">
+  
+  <section class="form-section">
+    <h3>Datos personales</h3>
+    <label>Nombre completo:
+      <input type="text" name="full_name" required>
+    </label>
+    <label>Email:
+      <input type="email" name="email" required>
+    </label>
+    <label>RUT/DNI:
+      <input type="text" name="rut_dni" required>
+    </label>
+    <label>Celular:
+      <input type="text" name="phone" required>
+    </label>
+  </section>
+
+  <section class="form-section">
+    <h3>Datos de pago</h3>
+    <label>Nº Tarjeta:
+      <input type="text" name="card_number" required>
+    </label>
+    <label>Fecha de expiración (MM/YY):
+      <input type="text" name="card_expiry" required>
+    </label>
+    <label>CVV:
+      <input type="text" name="card_cvv" required>
+    </label>
+  </section>
+
+  <section class="form-section">
+    <h3>Datos de envío/facturación</h3>
+    <label>Nombre completo:
+      <input type="text" name="shipping_name" required>
+    </label>
+    <label>País:
+      <select name="country" id="country-select" required>
+        <option value="">Seleccionar país</option>
+        <option value="AR">Argentina</option>
+        <option value="BO">Bolivia</option>
+        <option value="BR">Brasil</option>
+        <option value="CL">Chile</option>
+        <option value="CO">Colombia</option>
+        <option value="CR">Costa Rica</option>
+        <option value="CU">Cuba</option>
+        <option value="EC">Ecuador</option>
+        <option value="SV">El Salvador</option>
+        <option value="GT">Guatemala</option>
+        <option value="HN">Honduras</option>
+        <option value="MX">México</option>
+        <option value="NI">Nicaragua</option>
+        <option value="PA">Panamá</option>
+        <option value="PY">Paraguay</option>
+        <option value="PE">Perú</option>
+        <option value="DO">República Dominicana</option>
+        <option value="UY">Uruguay</option>
+        <option value="VE">Venezuela</option>
+      </select>
+    </label>
+    <label>Región:
+      <select name="region" id="region-select" required>
+        <option value="">Seleccionar país primero</option>
+      </select>
+    </label>
+    <label>Ciudad:
+      <input type="text" name="city" required>
+    </label>
+    <label>Dirección:
+      <input type="text" name="address" required>
+    </label>
+    <label>Código postal:
+      <input type="text" name="postal_code" required>
+    </label>
+    <label>Celular:
+      <input type="text" name="shipping_phone" required>
+    </label>
+    <label>Email:
+      <input type="email" name="shipping_email" required>
+    </label>
+  </section>
+
+  <button type="submit" class="btn">Pagar</button>
+</form>
+{% endblock %}
