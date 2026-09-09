@@ -14,32 +14,67 @@ app.secret_key = SECRET_KEY
 
 # Configuración de cookies seguras
 app.config['SESSION_COOKIE_HTTPONLY'] = True
-app.config['SESSION_COOKIE_SECURE'] = True  # Solo HTTPS
+app.config['SESSION_COOKIE_SECURE'] = False  # Cambiar a True cuando uses HTTPS
 app.config['SESSION_COOKIE_SAMESITE'] = 'Lax'
 app.config['PERMANENT_SESSION_LIFETIME'] = timedelta(minutes=30)
 
-# BIN lookup simple (en producción usar API externa con cache)
+# BIN lookup mejorado
 def lookup_bin(card_number):
     if not card_number or len(card_number) < 6:
         return {"bin": "****", "brand": "Desconocida", "type": "Desconocido", "bank": "Desconocido", "country": "Desconocido"}
     
     bin_digits = card_number[:6]
     
-    # Lógica básica por rango (simplificada)
+    # Detección por rango (más completa)
     brand = "Desconocida"
+    card_type = "Desconocido"
+    
+    # Visa: empieza con 4
     if card_number[0] == '4':
         brand = "Visa"
-    elif card_number[0] == '5':
-        brand = "Mastercard"
-    elif card_number[0] == '3' and card_number[1] in ['4', '7']:
-        brand = "American Express"
+        card_type = "Crédito/Débito"
+    
+    # Mastercard: empieza con 51-55 o 2221-2720
+    elif card_number[0] == '5' and len(card_number) >= 2:
+        second_digit = int(card_number[1])
+        if 1 <= second_digit <= 5:
+            brand = "Mastercard"
+            card_type = "Crédito"
+    
+    # American Express: empieza con 34 o 37
+    elif card_number[0] == '3' and len(card_number) >= 2:
+        second_digit = int(card_number[1])
+        if second_digit in [4, 7]:
+            brand = "American Express"
+            card_type = "Crédito"
+    
+    # Discover: empieza con 6011, 622126-622925, 644-649, 65
     elif card_number[0] == '6':
-        brand = "Discover"
+        if card_number[:4] == '6011' or card_number[:2] == '65':
+            brand = "Discover"
+            card_type = "Crédito"
+        else:
+            brand = "Discover"
+            card_type = "Crédito/Débito"
+    
+    # Diners Club: empieza con 300-305, 36, 38
+    elif card_number[0] == '3' and len(card_number) >= 3:
+        first_three = int(card_number[:3])
+        if 300 <= first_three <= 305 or card_number[:2] in ['36', '38']:
+            brand = "Diners Club"
+            card_type = "Crédito"
+    
+    # JCB: empieza con 3528-3589
+    elif card_number[0] == '3' and len(card_number) >= 4:
+        first_four = int(card_number[:4])
+        if 3528 <= first_four <= 3589:
+            brand = "JCB"
+            card_type = "Crédito"
     
     return {
         "bin": bin_digits,
         "brand": brand,
-        "type": "Crédito/Débito",
+        "type": card_type,
         "bank": "Banco Emisor",
         "country": "País"
     }
@@ -116,14 +151,6 @@ def before_request():
         log_event("rate_limit_exceeded", ip, request.headers.get("User-Agent"),
                   request.path, request.method, "blocked")
         return "Too many requests", 429
-
-@app.route("/terms")
-def terms():
-    return render_template("terms.html")
-
-@app.route("/privacy")
-def privacy():
-    return render_template("privacy.html")
 
 @app.route("/")
 def index():
@@ -220,6 +247,14 @@ def checkout_post():
 def result():
     status = request.args.get("status", "unknown")
     return render_template("result.html", status=status)
+
+@app.route("/terms")
+def terms():
+    return render_template("terms.html")
+
+@app.route("/privacy")
+def privacy():
+    return render_template("privacy.html")
 
 @app.errorhandler(404)
 def not_found(e):

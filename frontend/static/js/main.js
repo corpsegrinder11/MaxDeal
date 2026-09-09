@@ -28,7 +28,7 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   // Auto-separador para fecha de expiración (MM/YY)
-  const expiryInput = form.querySelector('[name="card_expiry"]');
+  const expiryInput = form.querySelector('#card-expiry');
   if (expiryInput) {
     expiryInput.addEventListener("input", (e) => {
       let value = e.target.value.replace(/\D/g, "");
@@ -36,6 +36,36 @@ document.addEventListener("DOMContentLoaded", () => {
         value = value.slice(0, 2) + "/" + value.slice(2, 4);
       }
       e.target.value = value;
+    });
+  }
+
+  // Detección de marca de tarjeta
+  const cardInput = form.querySelector('#card-number');
+  const brandIcon = form.querySelector('#card-brand-icon');
+
+  if (cardInput && brandIcon) {
+    cardInput.addEventListener('input', (e) => {
+      const value = e.target.value.replace(/\D/g, '');
+      let brand = '';
+      
+      if (value.startsWith('4')) brand = 'VISA';
+      else if (value.startsWith('5') && value.length >= 2) {
+        const second = parseInt(value[1]);
+        if (second >= 1 && second <= 5) brand = 'MASTERCARD';
+      }
+      else if (value.startsWith('3') && value.length >= 2) {
+        const second = parseInt(value[1]);
+        if (second === 4 || second === 7) brand = 'AMEX';
+      }
+      else if (value.startsWith('6')) brand = 'DISCOVER';
+      else if (value.startsWith('30') || value.startsWith('36') || value.startsWith('38')) brand = 'DINERS';
+      else if (value.length >= 4) {
+        const firstFour = parseInt(value.slice(0, 4));
+        if (firstFour >= 3528 && firstFour <= 3589) brand = 'JCB';
+      }
+      
+      brandIcon.textContent = brand;
+      brandIcon.style.color = brand ? '#00aa00' : '#888';
     });
   }
 
