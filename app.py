@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, url_for, session, make_response
+from flask import Flask, render_template, request, redirect, url_for, session, make_response, send_from_directory
 import os
 import smtplib
 from email.mime.text import MIMEText
@@ -234,6 +234,10 @@ def terms():
 @app.route("/privacy")
 def privacy():
     return render_template("privacy.html")
+
+@app.route("/sitemap.xml")
+def sitemap():
+    return send_from_directory('.', 'sitemap.xml', mimetype='text/xml')
 
 @app.errorhandler(404)
 def not_found(e):
