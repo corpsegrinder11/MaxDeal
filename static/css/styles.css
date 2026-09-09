@@ -1092,3 +1092,77 @@ main {
   line-height: 1.7;
   margin: var(--spacing-sm) 0;
 }
+
+/* Header mejorado con gradiente */
+header {
+  background: linear-gradient(180deg, #0a1628 0%, var(--bg-secondary) 100%);
+  padding: var(--spacing-lg);
+  text-align: center;
+  border-bottom: 1px solid rgba(0, 102, 255, 0.2);
+  position: relative;
+  overflow: hidden;
+}
+
+header::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--brand-primary), transparent);
+}
+
+header h1 {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--brand-primary);
+  letter-spacing: -0.02em;
+  position: relative;
+  z-index: 1;
+}
+
+/* Footer mejorado */
+footer {
+  margin-top: var(--spacing-2xl);
+  padding: var(--spacing-xl);
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  border-top: 1px solid rgba(0, 102, 255, 0.1);
+  background: linear-gradient(180deg, var(--bg-secondary) 0%, #0a1628 100%);
+  position: relative;
+}
+
+footer::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(0, 102, 255, 0.3), transparent);
+}
+
+footer p {
+  margin: var(--spacing-xs) 0;
+}
+
+/* Intro text para secciones */
+.intro-text {
+  color: var(--text-secondary);
+  font-size: 1.1rem;
+  line-height: 1.7;
+  margin-bottom: var(--spacing-xl);
+}
+
+/* Terms content spacing fix */
+.terms-content h3 {
+  margin-top: var(--spacing-xl);
+}
+
+.terms-content ul,
+.terms-content ol {
+  margin-bottom: var(--spacing-md);
+}
