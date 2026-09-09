@@ -1,282 +1,465 @@
 {% extends "base.html" %}
 {% block content %}
 
-<!-- Hero Section -->
 <section class="hero">
-  <div class="hero-bg-animation"></div>
+  <div class="hero-orbit hero-orbit-one" aria-hidden="true"></div>
+  <div class="hero-orbit hero-orbit-two" aria-hidden="true"></div>
+
   <div class="hero-content">
-    <div class="hero-badge">
-      <span class="badge-icon">🚀</span>
-      <span>Desarrollo Web & Automatización</span>
-    </div>
-    
-    <h1 class="hero-title">
-      Tu Negocio Online,<br>
-      <span class="gradient-text">Sin Complicaciones</span>
-    </h1>
-    
-    <p class="hero-subtitle">
-      Creo landing pages profesionales y automatizo tu WhatsApp para que vendas más. 
-      Sin que pierdas tiempo aprendiendo tecnología.
+    <p class="eyebrow">
+      <span class="status-dot" aria-hidden="true"></span>
+      Diseño web y automatización para emprendedores
     </p>
-    
-    <div class="hero-cta">
+
+    <h1 class="hero-title">
+      Haz que tu negocio se vea
+      <span>tan serio como el trabajo que haces.</span>
+    </h1>
+
+    <p class="hero-subtitle">
+      Landing pages, sitios web y flujos de WhatsApp pensados para explicar,
+      ordenar y convertir. Sin plantillas impersonales ni semanas de espera.
+    </p>
+
+    <div class="hero-actions">
       <a href="/checkout" class="btn btn-large btn-glow">
-        Empezar Ahora
-        <svg class="btn-arrow" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+        Cuéntame tu idea
+        <svg class="btn-arrow" width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
           <path d="M7.5 15L12.5 10L7.5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
       </a>
-      <p class="hero-note">Desde $95.000 CLP • Entrega en 48-72 horas</p>
+
+      <a href="#servicios" class="text-link">
+        Ver servicios
+        <span aria-hidden="true">↓</span>
+      </a>
     </div>
-    
-    <div class="hero-stats">
+
+    <p class="hero-note">
+      Desde $47.000 CLP · Trabajo remoto para Chile y Latinoamérica
+    </p>
+
+    <div class="hero-stats" aria-label="Beneficios principales">
       <div class="stat-item">
-        <div class="stat-number">48-72h</div>
-        <div class="stat-label">Entrega</div>
+        <strong class="stat-number">48–72 h</strong>
+        <span class="stat-label">Plazo inicial estimado</span>
       </div>
-      <div class="stat-divider"></div>
+
+      <div class="stat-divider" aria-hidden="true"></div>
+
       <div class="stat-item">
-        <div class="stat-number">50+</div>
-        <div class="stat-label">Proyectos</div>
+        <strong class="stat-number">1:1</strong>
+        <span class="stat-label">Comunicación directa</span>
       </div>
-      <div class="stat-divider"></div>
+
+      <div class="stat-divider" aria-hidden="true"></div>
+
       <div class="stat-item">
-        <div class="stat-number">100%</div>
-        <div class="stat-label">Garantía</div>
+        <strong class="stat-number">100%</strong>
+        <span class="stat-label">Trabajo personalizado</span>
       </div>
     </div>
   </div>
 </section>
 
-<!-- Problema -->
 <section class="section reveal">
+  <p class="section-kicker">El problema</p>
+
   <h2>
-    <svg class="section-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <svg class="section-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
       <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/>
       <path d="M12 8V12L15 15" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
     </svg>
-    ¿Te sientes identificado?
+    ¿Te suena conocido?
   </h2>
+
   <ul class="benefits-list">
-    <li>❌ Tienes un negocio pero sigues vendiendo solo por Instagram o WhatsApp</li>
-    <li>❌ Pierdes horas respondiendo las mismas preguntas una y otra vez</li>
-    <li>❌ Sabes que necesitas una web pero no tienes tiempo de aprender a hacerla</li>
-    <li>❌ Los desarrolladores te cotizan $500+ y tardan semanas</li>
-    <li>❌ Te da miedo invertir en algo que no sabes si funcionará</li>
+    <li>
+      <span class="list-mark list-mark-error" aria-hidden="true">×</span>
+      Vendes por Instagram o WhatsApp, pero no tienes un lugar claro que explique tu oferta.
+    </li>
+    <li>
+      <span class="list-mark list-mark-error" aria-hidden="true">×</span>
+      Respondes una y otra vez las mismas preguntas sobre precios, horarios o servicios.
+    </li>
+    <li>
+      <span class="list-mark list-mark-error" aria-hidden="true">×</span>
+      Necesitas una web, pero te frena el tiempo, los tecnicismos o presupuestos poco claros.
+    </li>
+    <li>
+      <span class="list-mark list-mark-error" aria-hidden="true">×</span>
+      Quieres una presencia profesional que puedas compartir con seguridad al captar clientes.
+    </li>
   </ul>
 </section>
 
-<!-- Solución -->
-<section class="section reveal">
+<section class="section reveal" id="servicios">
+  <p class="section-kicker">La solución</p>
+
   <h2>
-    <svg class="section-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M12 2L15 8L21 9L17 14L18 20L12 17L6 20L7 14L3 9L9 8L12 2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    <svg class="section-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <path d="M12 2L15 8L21 9L17 14L18 20L12 17L6 20L7 14L3 9L9 8L12 2Z"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"/>
     </svg>
-    Yo me encargo de todo
+    Yo me encargo de convertir la idea en algo publicable
   </h2>
-  <p class="intro-text">Soy desarrollador especializado en ayudar a emprendedores a tener presencia online profesional sin complicaciones.</p>
-  
+
+  <p class="intro-text">
+    Partimos por entender qué vendes, a quién quieres llegar y qué acción
+    necesitas que tome el visitante. A partir de eso se define una estructura,
+    un diseño y un flujo que sirvan para tu negocio, no una plantilla reciclada.
+  </p>
+
   <div class="services-grid">
-    <div class="service-card reveal">
-      <div class="service-icon">🚀</div>
+    <article class="service-card reveal">
+      <div class="service-icon service-icon-blue" aria-hidden="true">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none">
+          <path d="M4 5H20V19H4V5Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+          <path d="M4 9H20" stroke="currentColor" stroke-width="1.8"/>
+          <path d="M8 13H12M8 16H16" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+        </svg>
+      </div>
+
+      <p class="service-label">Para lanzar una oferta</p>
       <h3>Landing Page Profesional</h3>
-      <p class="price">$100 USD <span class="price-clp">($95.000 CLP)</span></p>
+
+      <p class="price">
+        $95.000 CLP
+        <span class="price-clp">o $100 USD</span>
+      </p>
+
       <ul>
-        <li>✓ Diseño moderno y responsive</li>
-        <li>✓ Optimizada para vender</li>
-        <li>✓ Formulario de contacto integrado</li>
-        <li>✓ Hosting incluido (sin costos mensuales)</li>
-        <li>✓ Entrega en 48-72 horas</li>
-        <li>✓ 1 semana de soporte gratis</li>
+        <li>Diseño responsive y personalizado</li>
+        <li>Mensaje comercial claro y enfocado</li>
+        <li>Formulario de contacto o captura</li>
+        <li>Publicación y configuración inicial</li>
+        <li>Entrega estimada en 48–72 horas</li>
+        <li>Una semana de soporte para ajustes menores</li>
       </ul>
-      <a href="/checkout" class="btn">Ordenar Landing</a>
-    </div>
-    
-    <div class="service-card reveal">
-      <div class="service-icon">🤖</div>
+
+      <a href="/checkout" class="btn">Quiero una landing</a>
+    </article>
+
+    <article class="service-card reveal">
+      <div class="service-icon service-icon-cyan" aria-hidden="true">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none">
+          <path d="M20 11.5A8.38 8.38 0 0 1 11.5 20a8.5 8.5 0 1 1 8.5-8.5Z"
+                stroke="currentColor"
+                stroke-width="1.8"
+                stroke-linecap="round"
+                stroke-linejoin="round"/>
+          <path d="M8 10H16M8 14H13" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+        </svg>
+      </div>
+
+      <p class="service-label">Para ordenar tus conversaciones</p>
       <h3>Automatización WhatsApp</h3>
-      <p class="price">$50 USD <span class="price-clp">($47.000 CLP)</span></p>
+
+      <p class="price">
+        $47.000 CLP
+        <span class="price-clp">o $50 USD</span>
+      </p>
+
       <ul>
-        <li>✓ Respuestas automáticas 24/7</li>
-        <li>✓ Mensajes de bienvenida personalizados</li>
-        <li>✓ Catálogo de productos/servicios</li>
-        <li>✓ Ubicación y horarios automáticos</li>
-        <li>✓ Configuración completa</li>
-        <li>✓ Manual de uso incluido</li>
+        <li>Mensaje de bienvenida y respuestas iniciales</li>
+        <li>Información de horarios, ubicación o catálogo</li>
+        <li>Flujo básico según las consultas frecuentes</li>
+        <li>Configuración guiada de WhatsApp Business</li>
+        <li>Entrega estimada en 24–48 horas</li>
+        <li>Manual simple para que puedas administrarlo</li>
       </ul>
-      <a href="/checkout" class="btn">Ordenar Automatización</a>
-    </div>
-    
-    <div class="service-card reveal">
-      <div class="service-icon">🌐</div>
+
+      <a href="/checkout" class="btn">Quiero automatizar WhatsApp</a>
+    </article>
+
+    <article class="service-card reveal">
+      <div class="service-icon service-icon-violet" aria-hidden="true">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none">
+          <path d="M4 4H20V20H4V4Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+          <path d="M4 8H20M8 4V20" stroke="currentColor" stroke-width="1.8"/>
+          <path d="M12 12H16M12 16H16" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+        </svg>
+      </div>
+
+      <p class="service-label">Para construir presencia digital</p>
       <h3>Página Web Completa</h3>
-      <p class="price">$200 USD <span class="price-clp">($190.000 CLP)</span></p>
+
+      <p class="price">
+        $190.000 CLP
+        <span class="price-clp">o $200 USD</span>
+      </p>
+
       <ul>
-        <li>✓ Hasta 5 secciones (Inicio, Servicios, Sobre Mí, Contacto, etc.)</li>
-        <li>✓ Diseño personalizado</li>
-        <li>✓ Formulario de contacto</li>
-        <li>✓ Integración con redes sociales</li>
-        <li>✓ Hosting incluido</li>
-        <li>✓ Entrega en 5-7 días</li>
+        <li>Hasta cinco secciones principales</li>
+        <li>Diseño visual adaptado a tu marca</li>
+        <li>Servicios, contacto y enlaces sociales</li>
+        <li>Formulario de contacto integrado</li>
+        <li>Base técnica ordenada y responsive</li>
+        <li>Entrega estimada en 5–7 días hábiles</li>
       </ul>
-      <a href="/checkout" class="btn">Ordenar Web Completa</a>
-    </div>
+
+      <a href="/checkout" class="btn">Quiero una web completa</a>
+    </article>
   </div>
-  
-  <div class="bundle-offer reveal">
+
+  <aside class="bundle-offer reveal">
     <div class="bundle-badge">
-      <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <svg width="17" height="17" viewBox="0 0 20 20" fill="none" aria-hidden="true">
         <path d="M10 2L12 7L17 8L13 12L14 17L10 15L6 17L7 12L3 8L8 7L10 2Z" fill="currentColor"/>
       </svg>
-      <span>MÁS POPULAR</span>
+      Opción combinada
     </div>
-    <h3>🔥 PACK EMPRENDEDOR</h3>
-    <p class="price">$140 USD <span class="price-clp">($133.000 CLP)</span> <span class="price-note">(ahorras $10 USD / $9.000 CLP)</span></p>
-    <p>Landing Page + Automatización WhatsApp</p>
-    <a href="/checkout" class="btn btn-large">Obtener Pack Completo</a>
+
+    <div class="bundle-copy">
+      <p class="service-label">Para empezar con una base completa</p>
+      <h3>Pack Emprendedor</h3>
+      <p>Landing Page + automatización inicial de WhatsApp.</p>
+    </div>
+
+    <div class="bundle-price">
+      <strong>$133.000 CLP</strong>
+      <span>$140 USD · ahorro de $9.000 CLP</span>
+    </div>
+
+    <a href="/checkout" class="btn btn-light">Quiero el pack</a>
+  </aside>
+</section>
+
+<section class="section reveal">
+  <p class="section-kicker">Cómo trabajo</p>
+
+  <h2>
+    <svg class="section-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <path d="M4 19V5M4 19H20" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+      <path d="M7 15L11 11L14 13L19 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+    Un proceso simple y visible
+  </h2>
+
+  <div class="process-grid">
+    <article class="process-card">
+      <span class="process-number">01</span>
+      <h3>Contexto</h3>
+      <p>Conversamos sobre tu negocio, oferta, público y referencias visuales.</p>
+    </article>
+
+    <article class="process-card">
+      <span class="process-number">02</span>
+      <h3>Propuesta</h3>
+      <p>Definimos alcance, precio, plazo y los materiales que necesitaremos.</p>
+    </article>
+
+    <article class="process-card">
+      <span class="process-number">03</span>
+      <h3>Construcción</h3>
+      <p>Desarrollo una primera versión para revisión, sin dejarte fuera del proceso.</p>
+    </article>
+
+    <article class="process-card">
+      <span class="process-number">04</span>
+      <h3>Publicación</h3>
+      <p>Hacemos los ajustes acordados y dejamos el proyecto listo para usar.</p>
+    </article>
   </div>
 </section>
 
-<!-- Testimonios Reales -->
 <section class="section reveal">
+  <p class="section-kicker">Una propuesta honesta</p>
+
   <h2>
-    <svg class="section-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M12 2L15 8L21 9L17 14L18 20L12 17L6 20L7 14L3 9L9 8L12 2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    <svg class="section-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <path d="M12 21A9 9 0 1 0 12 3a9 9 0 0 0 0 18Z" stroke="currentColor" stroke-width="2"/>
+      <path d="M12 8V12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+      <circle cx="12" cy="16" r="1" fill="currentColor"/>
     </svg>
-    Lo que dicen mis clientes
+    Qué puedes esperar
   </h2>
-  
+
   <div class="testimonials-grid">
-    <div class="testimonial-card reveal">
+    <article class="testimonial-card reveal">
       <div class="testimonial-header">
-        <div class="testimonial-avatar">👩‍💼</div>
+        <div class="testimonial-avatar testimonial-avatar-blue" aria-hidden="true">01</div>
         <div>
-          <div class="testimonial-name">Valentina Torres</div>
-          <div class="testimonial-role">Emprendedora, Santiago</div>
+          <div class="testimonial-name">Una página que explica</div>
+          <div class="testimonial-role">Claridad desde el primer vistazo</div>
         </div>
-        <div class="testimonial-stars">⭐⭐⭐⭐⭐</div>
       </div>
-      <p class="testimonial-text">"Necesitaba una landing urgente para lanzar mi producto y en 3 días ya estaba lista. La automatización de WhatsApp me ahorra como 2 horas al día respondiendo las mismas preguntas. Totalmente recomendada."</p>
-    </div>
-    
-    <div class="testimonial-card reveal">
+
+      <p class="testimonial-text">
+        Organizamos tu oferta para que una persona entienda qué haces, qué
+        problema resuelves y cómo puede contactarte sin buscar la información.
+      </p>
+    </article>
+
+    <article class="testimonial-card reveal">
       <div class="testimonial-header">
-        <div class="testimonial-avatar">👨‍💼</div>
+        <div class="testimonial-avatar testimonial-avatar-cyan" aria-hidden="true">02</div>
         <div>
-          <div class="testimonial-name">Carlos Mendoza</div>
-          <div class="testimonial-role">Dueño de e-commerce, Concepción</div>
+          <div class="testimonial-name">Un proceso acompañado</div>
+          <div class="testimonial-role">Sin exigir conocimientos técnicos</div>
         </div>
-        <div class="testimonial-stars">⭐⭐⭐⭐⭐</div>
       </div>
-      <p class="testimonial-text">"Tenía miedo de invertir en una web porque nunca había trabajado con un desarrollador. El proceso fue súper claro, me explicó todo en español simple y el resultado fue mejor de lo que esperaba. Ya vendí 3 veces lo que pagué."</p>
-    </div>
-    
-    <div class="testimonial-card reveal">
+
+      <p class="testimonial-text">
+        Usamos tus textos, fotos y referencias. Si todavía no tienes todo
+        resuelto, trabajamos desde la idea hasta una estructura concreta.
+      </p>
+    </article>
+
+    <article class="testimonial-card reveal">
       <div class="testimonial-header">
-        <div class="testimonial-avatar">👩‍🍳</div>
+        <div class="testimonial-avatar testimonial-avatar-violet" aria-hidden="true">03</div>
         <div>
-          <div class="testimonial-name">Andrea Silva</div>
-          <div class="testimonial-role">Chef a domicilio, Viña del Mar</div>
+          <div class="testimonial-name">Una entrega utilizable</div>
+          <div class="testimonial-role">Preparada para compartir y crecer</div>
         </div>
-        <div class="testimonial-stars">⭐⭐⭐⭐⭐</div>
       </div>
-      <p class="testimonial-text">"Mi negocio de comida creció mucho en Instagram pero no podía manejar todos los pedidos por WhatsApp. La automatización que hizo me permite recibir pedidos 24/7 sin estar pegada al celular. Mis ventas subieron 40%."</p>
-    </div>
+
+      <p class="testimonial-text">
+        El resultado se prueba en móvil y escritorio, se publica y queda con una
+        base ordenada para seguir ajustando cuando tu negocio lo necesite.
+      </p>
+    </article>
   </div>
+
+  <p class="section-note">
+    Los testimonios de clientes se publicarán únicamente cuando existan proyectos
+    reales y autorización para compartirlos.
+  </p>
 </section>
 
-<!-- Cómo funciona -->
 <section class="section reveal">
-  <h2>
-    <svg class="section-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/>
-      <path d="M12 6V12L16 14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-    </svg>
-    Así funciona
-  </h2>
-  <ol class="steps-list">
-    <li><strong>Ordenas tu servicio</strong> — Llenas el formulario y realizas el pago (50% anticipo)</li>
-    <li><strong>Agendamos una llamada</strong> — 20 minutos para entender tu negocio y necesidades</li>
-    <li><strong>Trabajo en tu proyecto</strong> — 48-72 horas después tienes todo listo</li>
-    <li><strong>Revisión y ajustes</strong> — Revisas, pides cambios si necesitas, y apruebas</li>
-    <li><strong>Lanzamiento</strong> — Tu web/automatización está lista para vender</li>
-  </ol>
-</section>
+  <p class="section-kicker">Por qué este enfoque</p>
 
-<!-- Por qué yo -->
-<section class="section reveal">
   <h2>
-    <svg class="section-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M12 2L15 8L21 9L17 14L18 20L12 17L6 20L7 14L3 9L9 8L12 2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    <svg class="section-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <path d="M20 6L9 17L4 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
     </svg>
-    ¿Por qué trabajar conmigo?
+    Sin tecnicismos, sin promesas vacías
   </h2>
-  <ul class="benefits-list">
-    <li>✓ <strong>Rápido:</strong> Entrega en 48-72 horas, no semanas</li>
-    <li>✓ <strong>Económico:</strong> Precios accesibles para emprendedores</li>
-    <li>✓ <strong>Sin tecnicismos:</strong> Te explico todo en español simple</li>
-    <li>✓ <strong>Soporte real:</strong> No desaparezco después de entregar</li>
-    <li>✓ <strong>Enfoque en ventas:</strong> Diseño pensando en convertir visitantes en clientes</li>
+
+  <ul class="benefits-list benefits-list-positive">
+    <li>
+      <span class="list-mark list-mark-success" aria-hidden="true">✓</span>
+      <span><strong>Directo:</strong> hablas con quien trabaja en tu proyecto.</span>
+    </li>
+    <li>
+      <span class="list-mark list-mark-success" aria-hidden="true">✓</span>
+      <span><strong>Claro:</strong> antes de empezar definimos qué incluye y qué no incluye el servicio.</span>
+    </li>
+    <li>
+      <span class="list-mark list-mark-success" aria-hidden="true">✓</span>
+      <span><strong>Práctico:</strong> se prioriza que tu web explique, contacte y acompañe una venta.</span>
+    </li>
+    <li>
+      <span class="list-mark list-mark-success" aria-hidden="true">✓</span>
+      <span><strong>Flexible:</strong> trabajamos de forma remota con negocios de Chile y Latinoamérica.</span>
+    </li>
   </ul>
 </section>
 
-<!-- Precio / Garantía -->
 <section class="section pricing reveal">
-  <h2>Inversión sin riesgo</h2>
-  <p class="price-desc">Pago 50% al iniciar, 50% al entregar. Acepto transferencia, PayPal, o la plataforma que prefieras.</p>
-  <a href="/checkout" class="btn btn-large btn-glow">Comenzar Ahora</a>
-  <p class="guarantee">🔒 Garantía de satisfacción — Tu inversión está protegida</p>
+  <p class="section-kicker">Forma de pago</p>
+
+  <h2>Empieza sin pagar todo por adelantado</h2>
+
+  <p class="price-desc">
+    El servicio se reserva con un 50% de anticipo. El saldo se paga al aprobar
+    la entrega acordada. Antes del pago conversamos para confirmar que el servicio
+    sea el adecuado para lo que necesitas.
+  </p>
+
+  <a href="/checkout" class="btn btn-large btn-glow">
+    Solicitar mi proyecto
+    <svg class="btn-arrow" width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+      <path d="M7.5 15L12.5 10L7.5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  </a>
+
+  <p class="guarantee">
+    <span aria-hidden="true">◆</span>
+    Recibirás respuesta dentro de 24 horas hábiles.
+  </p>
 </section>
 
-<!-- FAQ -->
 <section class="section reveal">
+  <p class="section-kicker">Preguntas frecuentes</p>
+
   <h2>
-    <svg class="section-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <svg class="section-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
       <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/>
-      <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-      <circle cx="12" cy="17" r="0.5" fill="currentColor"/>
+      <path d="M9.1 9A3 3 0 0 1 14.9 10C14.9 12 12 13 12 13" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+      <circle cx="12" cy="17" r="1" fill="currentColor"/>
     </svg>
     Preguntas frecuentes
   </h2>
-  
+
   <div class="faq-item">
-    <strong>¿Qué necesito para empezar?</strong>
-    <p>Solo necesito que tengas claro qué quieres ofrecer y a quién. Si no tienes dominio, te ayudo a conseguir uno gratis o de bajo costo.</p>
+    <strong>¿Qué necesito tener antes de empezar?</strong>
+    <p>
+      Idealmente, una explicación de tu negocio, tus servicios o productos,
+      medios de contacto y cualquier referencia visual que te guste. Si no lo
+      tienes todo listo, podemos ordenar lo esencial en la conversación inicial.
+    </p>
   </div>
-  
+
   <div class="faq-item">
-    <strong>¿Cuánto tiempo toma?</strong>
-    <p>Landing page: 48-72 horas. Automatización WhatsApp: 24-48 horas. Página web completa: 5-7 días.</p>
+    <strong>¿Puedo contratar desde fuera de Chile?</strong>
+    <p>
+      Sí. El trabajo se realiza de forma remota para clientes de Chile y otros
+      países de Latinoamérica. El método de pago se define según el país.
+    </p>
   </div>
-  
+
   <div class="faq-item">
-    <strong>¿Qué pasa si necesito cambios después?</strong>
-    <p>Incluyo 1 semana de soporte gratis para ajustes menores. Cambios grandes los cotizo aparte, pero siempre con precio preferencial.</p>
+    <strong>¿Incluyes dominio y hosting?</strong>
+    <p>
+      La publicación inicial está incluida según el alcance acordado. El dominio
+      se registra a tu nombre y los costos de renovación se explican antes de
+      contratar para que no haya sorpresas.
+    </p>
   </div>
-  
+
   <div class="faq-item">
-    <strong>¿Solo trabajas con emprendedores de Chile?</strong>
-    <p>Trabajo con clientes de toda Latinoamérica de forma remota. La comunicación es por WhatsApp, email o llamada.</p>
+    <strong>¿Qué ocurre si después necesito cambios?</strong>
+    <p>
+      Incluyo una semana para ajustes menores posteriores a la entrega. Si luego
+      necesitas nuevas secciones, funciones o una evolución mayor, se cotiza
+      aparte y siempre se confirma antes de realizar el trabajo.
+    </p>
   </div>
-  
+
   <div class="faq-item">
-    <strong>¿Qué formas de pago aceptas?</strong>
-    <p>Transferencia bancaria (Chile), PayPal, o la plataforma que prefieras. 50% al iniciar, 50% al entregar.</p>
-  </div>
-  
-  <div class="faq-item">
-    <strong>No tengo experiencia técnica, ¿hay problema?</strong>
-    <p>¡Para nada! La mayoría de mis clientes no saben nada de tecnología. Yo me encargo de todo y te explico cómo usarlo en términos simples.</p>
+    <strong>¿Cómo funciona el pago?</strong>
+    <p>
+      Se reserva con un 50% de anticipo una vez confirmado el alcance. El 50%
+      restante se paga al aprobar la entrega. No se almacenan datos de tarjeta
+      en este sitio.
+    </p>
   </div>
 </section>
 
-<!-- CTA Final -->
 <section class="section cta-final reveal">
-  <h2>¿Listo para llevar tu negocio al siguiente nivel?</h2>
-  <p class="cta-subtitle">No dejes que la tecnología te frene. Yo me encargo de eso.</p>
-  <a href="/checkout" class="btn btn-large btn-glow">Empezar Ahora</a>
-  <p class="cta-note">Respuesta en menos de 24 horas • Cupos limitados</p>
+  <p class="section-kicker">El siguiente paso</p>
+
+  <h2>Tu negocio ya merece un lugar propio en internet.</h2>
+
+  <p class="cta-subtitle">
+    Cuéntame qué vendes y qué quieres conseguir. Te responderé con una propuesta
+    clara, sin compromiso y sin lenguaje innecesariamente técnico.
+  </p>
+
+  <a href="/checkout" class="btn btn-large btn-glow">
+    Empezar una conversación
+    <svg class="btn-arrow" width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+      <path d="M7.5 15L12.5 10L7.5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  </a>
+
+  <p class="cta-note">Sin pagos automáticos · Sin obligación de contratar</p>
 </section>
 
 {% endblock %}
